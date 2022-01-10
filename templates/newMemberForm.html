@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Webpage Title -->
+        <title>모두의 책리뷰 | 스파르타코딩클럽</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <!-- JS -->
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+
+        <!-- 구글폰트 -->
+        <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+            });
+
+            function new_member() {
+                let email1 = $('#email1').val();
+                let email2 = $('#email2').val();
+                let name = $('#name').val();
+                let password1 = $('#password1').val();
+                let password2 = $('#password2').val();
+                let company = $('#company').val();
+                let role = $('#role').val();
+                let position = $('#position').val();
+                let tel = $('#tel').val();
+                let address = $('#address').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/newMember",
+                    data: {email1:email1, email2:email2, name:name, password1:password1, password2:password2,
+                        company: company, role:role, position:position, tel:tel, address:address},
+                    success: function (response) {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                })
+            }
+
+            function validate_email() {
+                let validate = true
+                let email1 = $('#email1').val();
+                let email2 = $('#email2').val();
+                let email = email1 + "@" + email2;
+                $.ajax({
+                    type: "POST",
+                    url: "/validate_email",
+                    data: {email: email},
+                    success: function (response) {
+                        validate = response["validate"]
+
+                        if (validate) {
+                            alert("사용 가능한 이메일입니다.")
+                        } else {
+                            alert("이미 존재하는 이메일입니다.")
+                        }
+                    }
+                })
+            }
+            function api(){
+                            new daum.Postcode({
+                oncomplete: function (data) {
+                    document.getElementById("address").value = data.address;
+                }
+            }).open();
+            }
+
+            function check_pw(){
+            if(document.getElementById('password1').value !='' && document.getElementById('password2').value!=''){
+                if(document.getElementById('password1').value==document.getElementById('password2').value){
+                    document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+                    document.getElementById('check').style.color='blue';
+                }
+                else{
+                    document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+                    document.getElementById('check').style.color='red';
+                }
+            }
+        }
+    </script>
+
+
+        <style type="text/css">
+            * {
+                font-family: "Do Hyeon", sans-serif;
+            }
+
+            .form-control{
+                width : 300px
+            }
+        </style>
+</head>
+<body>
+
+<div>
+    <h2>메일*</h2>
+    <input type="text" class="form-control" id="email1">
+<!--    <input type="text" class="form-control" id="email2">-->
+    <select id="email2">
+        <option value="naver.com">naver.com</option>
+        <option value="daum.net">daum.net</option>
+        <option value="gmail.com">gmail.com</option>
+        <option value="direct">직접입력</option>
+    </select>
+    <button onclick="validate_email()">중복확인</button>
+    <h2>이름*</h2>
+    <input type="text" class="form-control" id="name">
+    <h2>비밀번호*</h2>
+    <input type="password" class="form-control" id="password1" onchange="check_pw()">
+    <h2>비밀번호 확인*</h2>
+    <input type="password" class="form-control" id="password2" onchange="check_pw()">&nbsp;<span id="check"></span>
+    <h2>회사/직무/직책*</h2>
+    <input type="text" class="form-control" id="company"> <input type="text" class="form-control" id="role"> <input type="text" class="form-control" id="position">
+    <h2>전화번호</h2>
+    <input type="text" class="form-control" id="tel">
+    <h2>회사 주소</h2>
+    <input type="text" class="form-control" id="address">
+    <button onclick="api()">주소</button>
+
+    <button onclick="new_member()" type="button" class="btn btn-primary">회원가입</button>
+</div>
+
+</body>
+</html>
