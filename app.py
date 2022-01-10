@@ -14,14 +14,18 @@ db = client.card
 
 SECRET_KEY = 'SPARTA'
 
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    default_card_list = list(db.cards.find({'user_email': 'bbb@naver.com', 'card_bookmark': False}))
+    bookmark_card_list = list(db.cards.find({'user_email': 'bbb@naver.com', 'card_bookmark': True}))
+    print(default_card_list)
+    return render_template('mainPage.html', default_card_list=default_card_list, bookmark_card_list=bookmark_card_list)
+
 
 # 리스트 작성 창에서 리스트 양식 값들 받아오기
 @app.route('/api/pluscard', methods=['POST'])
 def api_pluscard():
-
     # db schedule에 들어갈 정보들 dictionary 작성
     useremail = request.form['useremail']
     card_emailid = request.form['card_emailid']
@@ -37,7 +41,7 @@ def api_pluscard():
     doc = {
         "email": useremail,
         "card_email": card_emailid,
-        #카드 이미지 추가
+        # 카드 이미지 추가
         "card_name": card_nameid,
         "card_company": card_companyid,
         "card_role": card_roleid,
@@ -53,6 +57,29 @@ def api_pluscard():
     return jsonify({'result': 'success', 'msg': '등록 성공하였습니다.'})
 
 
+# 명함 삭제
+@app.route('/api/list', methods=["POST"])
+def delete_card():
+    card_id_receive = request.form['card_id_give']
+    db.cards.delete_one({'_id': ObjectId(card_id_receive)})
+    return jsonify({'msg': 'delete!'})
+
+
+# 명함 즐겨찾기 등록 및 취소
+@app.route('/api/list/bookmark', methods=["POST"])
+def bookmark_card():
+    card_id_receive = request.form['card_id_give']
+    bookmark_receive = bool(request.form['bookmark_give'])
+    card = db.cards.find_one({'user_email': 'bbb@naver.com'})
+    card_list = db.cards.update_one({'_id': ObjectId(card_id_receive)})
+
+    if bookmark_receive is True:
+        db.cards.update_one({'_id': ObjectId(card_id_receive)}, {"$set": {'card_bookmark': True}})
+        return jsonify({'msg': '즐겨찾기 등록완료'})
+    else:
+        db.cards.update_one({'_id': ObjectId(card_id_receive)}, {"$set": {'card_bookmark': False}})
+        return jsonify({'msg': '즐겨찾기 취소'})
+
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=8080, debug=True)

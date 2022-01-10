@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% include 'header.html' %}
+{% block content %}
+<div id="root">
+    <button type="button" onclick="modal_open_btn()" id="modal_opne_btn">모달 창 열기</button>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal_content">
+        <p><input id="card_nameid" placeholder="이름 (필수)"></p>
+        <p id="help-name" style="color:red;"></p>
+        <p><input id="card_emailid" placeholder="이메일 (필수)"></p>
+        <p id="help-email" style="color:red;"></p>
+        <p><input id="card_telid" placeholder="전화번호 (필수)"></p>
+        <p id="help-tel" style="color:red;"></p>
+        <input id="card_companyid" placeholder="회사 (필수)">
+        <p id="help-company" style="color:red;"></p>
+        <input id="card_roleid" placeholder="직무">
+        <input id="card_positionid" placeholder="직책">
+        <p></p>
+
+        <p><input type="text" id="card_addressid" placeholder="회사 주소">
+            <button onclick="find_address()">주소 찾기</button>
+        </p>
+        <p><input id="card_descid" placeholder="상세 정보"></p>
+
+        <button onclick="closebtn()">취소</button>
+        <button onclick="checkbtn()">명함 등록</button>
+
+    </div>
+</div>
+{% endblock %}

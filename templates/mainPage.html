@@ -1,0 +1,180 @@
+{% extends 'index.html' %}
+
+{% include 'header.html' %}
+
+{% block content %}
+<section class="main-page">
+    <div class="title-header-wrapper">
+        <div aria-label="title" class="title">즐겨찾기 리스트</div>
+
+        <div class="header-right-area">
+            <div class="search-area">
+                <div class="select">
+                    <select>
+                        <option>소속</option>
+                        <option>이름</option>
+                        <option>직책</option>
+                        <option>직무</option>
+                        <option>전화번호</option>
+                        <option>이메일</option>
+                    </select>
+                </div>
+
+                <input class="input" aria-label="search-box" type="text" placeholder="검색어를 입력해주세요"/>
+
+            </div>
+
+            <div class="sort-area">
+                <span>정렬 선택</span>
+                <div class="select">
+                    <select class="h-select">
+                        <option>등록순</option>
+                        <option>회사별</option>
+                        <option>이름순(가나다순)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div aria-label="bookmark-list" class="card-list bookmark-list">
+        {% for card in bookmark_card_list %}
+        <div aria-label="card-item" class="card-item">
+            {% if card.card_bookmark == true %}
+            <div onclick="handleClickBookmark('{{card._id}}', false)" class="bookmark-button click">
+                <i class="bi bi-bookmark-fill"></i>
+            </div>
+            {% else %}
+            <div onclick="handleClickBookmark('{{card._id}}', true)" class="bookmark-button click">
+                <i class="bi bi-bookmark"></i>
+            </div>
+            {% endif %}
+
+            {% if card_imgs in card %}
+            <img src="" class="card-image"/>
+            {% else %}
+            <img src="/static/images/noimg.png" class="card-image"/>
+            {% endif %}
+
+            <div class="info-wrapper">
+                <div class="inline">
+                    <div>회사</div>
+                    <div>{{ card.card_company}}</div>
+                </div>
+                <div class="inline">
+                    <div>이름</div>
+                    <div>{{ card.card_name }}</div>
+                </div>
+                <div class="inline">
+                    <div>직책</div>
+                    <div>{{ card.card_role}}</div>
+                </div>
+                <div class="inline">
+                    <div>전화번호</div>
+                    <div>{{ card.card_tel}}</div>
+                </div>
+                <div class="inline">
+                    <div>이메일</div>
+                    <div>{{ card.card_email}}</div>
+                </div>
+                <!--삭제버튼 빼는게 나을 수도 -->
+                <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
+                    <i class="bi bi-trash-fill"></i>
+                </div>
+                <!--<button  class="button is-danger">삭제</button>-->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="title-header-wrapper">
+        <div aria-label="title" class="title">즐겨찾기 리스트</div>
+
+        <div class="header-right-area">
+            <div class="search-area">
+                <div class="select">
+                    <select>
+                        <option>소속</option>
+                        <option>이름</option>
+                        <option>직책</option>
+                        <option>직무</option>
+                        <option>전화번호</option>
+                        <option>이메일</option>
+                    </select>
+                </div>
+
+                <input class="input" aria-label="search-box" type="text" placeholder="검색어를 입력해주세요"/>
+
+            </div>
+
+            <div class="sort-area">
+                <span>정렬 선택</span>
+                <div class="select">
+                    <select class="h-select">
+                        <option>등록순</option>
+                        <option>회사별</option>
+                        <option>이름순(가나다순)</option>
+                    </select>
+                </div>
+                <button class="button is-normal is-primary is-light" aria-label="add-business-card" onclick="">+</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div aria-label="cards_list" class="card-list">
+        {% for card in default_card_list %}
+        <div aria-label="card-item" class="card-item">
+            {% if card.card_bookmark == true %}
+            <div onclick="handleClickBookmark('{{card._id}}', false)" class="bookmark-button click">
+                <i class="bi bi-bookmark-fill"></i>
+            </div>
+            {% else %}
+            <div onclick="handleClickBookmark('{{card._id}}', true)" class="bookmark-button click">
+                <i class="bi bi-bookmark"></i>
+            </div>
+            {% endif %}
+
+            {% if card_imgs in card %}
+            <img src="" class="card-image"/>
+            {% else %}
+            <img src="/static/images/noimg.png" class="card-image"/>
+            {% endif %}
+
+            <div class="info-wrapper">
+                <div class="inline">
+                    <div>회사</div>
+                    <div>{{ card.card_company}}</div>
+                </div>
+                <div class="inline">
+                    <div>이름</div>
+                    <div>{{ card.card_name }}</div>
+                </div>
+                <div class="inline">
+                    <div>직책</div>
+                    <div>{{ card.card_role}}</div>
+                </div>
+                <div class="inline">
+                    <div>전화번호</div>
+                    <div>{{ card.card_tel}}</div>
+                </div>
+                <div class="inline">
+                    <div>이메일</div>
+                    <div>{{ card.card_email}}</div>
+                </div>
+                <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
+                    <i class="bi bi-trash-fill"></i>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- 무한 스크롤 추후 구현 -->
+{% endblock %}
+
+<!--{% include 'footer.html' %}-->
