@@ -42,10 +42,31 @@
     font-weight: 700;
     src: url(/static/fonts/NotoSansKR-Bold.otf);
 }
-
-body{
-
+html {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
 }
+
+.click {
+    cursor: pointer;
+}
+
 .content-wrapper {
     /*max-width: 1440px;*/
+}
+
+.input {
+    height: 35px;
+    font-size: 1rem;
+}
+.input.is-normal{
+    height: 35px;
+}
+.select select:focus, .input:focus {
+    border: 1px solid var(--custom-primary);
+    box-shadow: none;
+}
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: var(--gray600);
 }
