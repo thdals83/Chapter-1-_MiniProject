@@ -69,11 +69,9 @@ def delete_card():
 @app.route('/api/list/bookmark', methods=["POST"])
 def bookmark_card():
     card_id_receive = request.form['card_id_give']
-    bookmark_receive = bool(request.form['bookmark_give'])
-    card = db.cards.find_one({'user_email': 'bbb@naver.com'})
-    card_list = db.cards.update_one({'_id': ObjectId(card_id_receive)})
+    card = db.cards.find_one({'_id': ObjectId(card_id_receive)})
 
-    if bookmark_receive is True:
+    if card['card_bookmark'] is False:
         db.cards.update_one({'_id': ObjectId(card_id_receive)}, {"$set": {'card_bookmark': True}})
         return jsonify({'msg': '즐겨찾기 등록완료'})
     else:

@@ -42,11 +42,11 @@
         {% for card in bookmark_card_list %}
         <div aria-label="card-item" class="card-item">
             {% if card.card_bookmark == true %}
-            <div onclick="handleClickBookmark('{{card._id}}', false)" class="bookmark-button click">
+            <div onclick="handleClickBookmark('{{card._id}}')" class="bookmark-button click">
                 <i class="bi bi-bookmark-fill"></i>
             </div>
             {% else %}
-            <div onclick="handleClickBookmark('{{card._id}}', true)" class="bookmark-button click">
+            <div onclick="handleClickBookmark('{{card._id}}')" class="bookmark-button click">
                 <i class="bi bi-bookmark"></i>
             </div>
             {% endif %}
@@ -129,11 +129,11 @@
         {% for card in default_card_list %}
         <div aria-label="card-item" class="card-item">
             {% if card.card_bookmark == true %}
-            <div onclick="handleClickBookmark('{{card._id}}', false)" class="bookmark-button click">
+            <div onclick="handleClickBookmark('{{card._id}}')" class="bookmark-button click">
                 <i class="bi bi-bookmark-fill"></i>
             </div>
             {% else %}
-            <div onclick="handleClickBookmark('{{card._id}}', true)" class="bookmark-button click">
+            <div onclick="handleClickBookmark('{{card._id}}')" class="bookmark-button click">
                 <i class="bi bi-bookmark"></i>
             </div>
             {% endif %}
