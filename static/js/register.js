@@ -1,5 +1,6 @@
 function modal_open_btn() {
-    $("#modal").css("display", "inline")
+    $("#modal").css("display", "inline");
+    $("html").css("overflow", "hidden");
 }
 
 function closebtn() {
@@ -18,28 +19,28 @@ function checkbtn() {
     let card_emailid = $("#card_emailid").val();
     let card_bookmarkid = "0"
 
-    if (card_nameid == "") {
+    if (card_nameid === "") {
         $("#help-name").text("이름을 입력해주세요.")
         return;
     } else {
         $("#help-name").text("")
     }
 
-    if (card_emailid == "") {
+    if (card_emailid === "") {
         $("#help-email").text("이메일을 입력해주세요.")
         return;
     } else {
         $("#help-email").text("")
     }
 
-    if (card_telid == "") {
+    if (card_telid === "") {
         $("#help-tel").text("전화번호를 입력해주세요.")
         return;
     } else {
         $("#help-tel").text("")
     }
 
-    if (card_companyid == "") {
+    if (card_companyid === "") {
         $("#help-company").text("회사를 입력해주세요.")
         return;
     }
