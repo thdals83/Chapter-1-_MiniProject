@@ -1,10 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Sunflower:wght@500&display=swap"
+          rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <style>
+
+        .modal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .modal_content {
+            width: 400px;
+            height: 200px;
+            background: #fff;
+            border-radius: 10px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -200px;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 74px 0;
+            line-height: 23px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        function modal_open_btn(){
+            $("#modal").css("display", "inline")
+        }
+        function closebtn(){
+            $("#modal").css("display", "none")
+        }
+        function checkbtn(){
+            let useremail = "123@naver.com"
+            let card_nameid = $("#card_nameid").val();
+            let card_companyid = $("#card_companyid").val();
+            let card_roleid = $("#card_roleid").val();
+            let card_positionid = $("#card_positionid").val();
+            let card_telid = $("#card_telid").val();
+            let card_addressid = $("#card_addressid").val();
+            let card_descid = $("#card_descid").val();
+            // $("#modal").css("display", "none")
+            window.location.reload()
+        }
+
+    </script>
+
 </head>
+
+
 <body>
-check
+<div id="root">
+    <button type="button" onclick="modal_open_btn()" id="modal_opne_btn">모달 창 열기</button>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal_content">
+        <input id = "card_nameid" placeholder="이름">
+        <input id = "card_companyid" placeholder="회사">
+        <input id = "card_roleid" placeholder="직무">
+        <input id = "card_positionid" placeholder="직책">
+        <input id = "card_telid" placeholder="전화번호">
+        <input id = "card_addressid" placeholder="회사 주소">
+        <input id = "card_descid" placeholder="상세 정보">
+        <button onclick="closebtn()">취소</button>
+        <button onclick="checkbtn()">명함 등록</button>
+
+    </div>
+</div>
 </body>
 </html>
