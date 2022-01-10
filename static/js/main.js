@@ -9,12 +9,11 @@ function handleClickDeleteCard(cardId) {
     })
 }
 
-function handleClickBookmark(cardId, boolean) {
-    console.log(boolean)
+function handleClickBookmark(cardId) {
     $.ajax({
         type: "POST",
         url: "/api/list/bookmark",
-        data: {'card_id_give': cardId, 'bookmark_give': boolean },
+        data: {'card_id_give': cardId },
         success: function (response) {
             alert(response['msg'])
         }
