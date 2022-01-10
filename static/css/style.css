@@ -1,0 +1,51 @@
+/* 공통요소 및 css 라이브러리 덮어 쓴 요소 */
+:root {
+    --gray50: #F9FAFB;
+    --gray100: #F6F7FB;
+    --gray200: #EEF1F7;
+    --gray300: #E6EAF4;
+    --gray400: #CBD2E3;
+    --gray500: #B5BCCD;
+    --gray600: #858DA3;
+    --gray700: #686C7E;
+    --gray800: #363A4C;
+    --gray900: #171F31;
+    --custom-primary: #0095ff;
+    --custom-secondary: #848B9F;
+    --table-header: #EEF1F7;
+    --global-bg: #F6F7FB;
+    --black: #333333;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    src: url(/static/fonts/NotoSansKR-Regular.otf);
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 500;
+    src: url(/static/fonts/NotoSansKR-Medium.otf);
+}
+
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 300;
+    src: url(/static/fonts/NotoSansKR-Light.otf);
+}
+
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 700;
+    src: url(/static/fonts/NotoSansKR-Bold.otf);
+}
+
+body{
+
+}
+.content-wrapper {
+    /*max-width: 1440px;*/
+}
