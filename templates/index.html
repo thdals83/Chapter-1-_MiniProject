@@ -36,8 +36,8 @@
         }
 
         .modal_content {
-            width: 400px;
-            height: 200px;
+            width: 600px;
+            height: 400px;
             background: #fff;
             border-radius: 10px;
             position: relative;
@@ -54,13 +54,15 @@
     </style>
 
     <script>
-        function modal_open_btn(){
+        function modal_open_btn() {
             $("#modal").css("display", "inline")
         }
-        function closebtn(){
+
+        function closebtn() {
             $("#modal").css("display", "none")
         }
-        function checkbtn(){
+
+        function checkbtn() {
             let useremail = "123@naver.com"
             let card_nameid = $("#card_nameid").val();
             let card_companyid = $("#card_companyid").val();
@@ -69,7 +71,56 @@
             let card_telid = $("#card_telid").val();
             let card_addressid = $("#card_addressid").val();
             let card_descid = $("#card_descid").val();
-            // $("#modal").css("display", "none")
+            let card_emailid = $("#card_emailid").val();
+            let card_bookmarkid = "0"
+
+            if (card_nameid == "") {
+                $("#help-name").text("이름을 입력해주세요.")
+                return;
+            } else {
+                $("#help-name").text("")
+            }
+
+            if (card_emailid == "") {
+                $("#help-email").text("이메일을 입력해주세요.")
+                return;
+            } else {
+                $("#help-email").text("")
+            }
+
+            if (card_telid == "") {
+                $("#help-tel").text("전화번호를 입력해주세요.")
+                return;
+            } else {
+                $("#help-tel").text("")
+            }
+
+            if (card_companyid == "") {
+                $("#help-company").text("회사를 입력해주세요.")
+                return;
+            }
+
+
+            $.ajax({
+                type: "POST",
+                url: "/api/pluscard",
+                data: {
+                    useremail: useremail,
+                    card_nameid: card_nameid,
+                    card_companyid: card_companyid,
+                    card_roleid: card_roleid,
+                    card_positionid: card_positionid,
+                    card_telid: card_telid,
+                    card_addressid: card_addressid,
+                    card_descid: card_descid,
+                    card_bookmarkid: card_bookmarkid,
+                    card_emailid: card_emailid
+                },
+                success: function (response) {
+                    alert(response)
+                }
+            })
+
             window.location.reload()
         }
 
@@ -85,13 +136,21 @@
 
 <div class="modal" id="modal">
     <div class="modal_content">
-        <input id = "card_nameid" placeholder="이름">
-        <input id = "card_companyid" placeholder="회사">
-        <input id = "card_roleid" placeholder="직무">
-        <input id = "card_positionid" placeholder="직책">
-        <input id = "card_telid" placeholder="전화번호">
-        <input id = "card_addressid" placeholder="회사 주소">
-        <input id = "card_descid" placeholder="상세 정보">
+        <p><input id="card_nameid" placeholder="이름 (필수)"></p>
+        <p id="help-name" style="color:red;"></p>
+        <p><input id="card_emailid" placeholder="이메일 (필수)"></p>
+        <p id="help-email" style="color:red;"></p>
+        <p><input id="card_telid" placeholder="전화번호 (필수)"></p>
+        <p id="help-tel" style="color:red;"></p>
+        <input id="card_companyid" placeholder="회사 (필수)">
+        <p id="help-company" style="color:red;"></p>
+        <input id="card_roleid" placeholder="직무">
+        <input id="card_positionid" placeholder="직책">
+        <p></p>
+
+        <p><input id="card_addressid" placeholder="회사 주소"></p>
+        <p><input id="card_descid" placeholder="상세 정보"></p>
+
         <button onclick="closebtn()">취소</button>
         <button onclick="checkbtn()">명함 등록</button>
 
