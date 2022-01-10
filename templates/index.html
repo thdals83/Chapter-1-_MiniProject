@@ -22,6 +22,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <!--다음 지도 API 가져오기    -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <style>
 
@@ -37,7 +39,7 @@
 
         .modal_content {
             width: 600px;
-            height: 400px;
+            height: 500px;
             background: #fff;
             border-radius: 10px;
             position: relative;
@@ -123,6 +125,13 @@
 
             window.location.reload()
         }
+        function find_address(){
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    document.getElementById("card_addressid").value = data.address
+                }
+            }).open();
+        }
 
     </script>
 
@@ -148,7 +157,9 @@
         <input id="card_positionid" placeholder="직책">
         <p></p>
 
-        <p><input id="card_addressid" placeholder="회사 주소"></p>
+        <p><input type="text" id="card_addressid" placeholder="회사 주소">
+            <button onclick="find_address()">주소 찾기</button>
+        </p>
         <p><input id="card_descid" placeholder="상세 정보"></p>
 
         <button onclick="closebtn()">취소</button>
