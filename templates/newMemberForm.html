@@ -22,42 +22,76 @@
                 crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
         <script type="text/javascript" src="/static/js/newMember.js"></script>
+
+    <script type="text/javascript">
+        function email_change() {
+            if (document.join.email.options[document.join.email.selectedIndex].value == '0') {
+                document.join.email2.disabled = true;
+                document.join.email2.value = "";
+            }
+            if (document.join.email.options[document.join.email.selectedIndex].value == '9') {
+                document.join.email2.disabled = false;
+                document.join.email2.value = "";
+                document.join.email2.focus();
+            } else {
+                document.join.email2.disabled = true;
+                document.join.email2.value = document.join.email.options[document.join.email.selectedIndex].value;
+            }
+        }
+    </script>
+
+
 </head>
 <body>
 
 <div class="wrap">
-    메일*<input type="text" class="form-control" id="email1">
-    <select class="select-box" id="email2">
-        <option value="naver.com">naver.com</option>
-        <option value="daum.net">daum.net</option>
-        <option value="gmail.com">gmail.com</option>
-        <option value="direct">직접입력</option>
-    </select>
-{#    <input type="text" id="direct">#}
+{#    메일*<input type="text" class="form-control" id="email1">#}
+{#    <select class="select-box" id="email2">#}
+{#        <option value="naver.com">naver.com</option>#}
+{#        <option value="daum.net">daum.net</option>#}
+{#        <option value="gmail.com">gmail.com</option>#}
+{#        <option value="direct">직접입력</option>#}
+{#    </select>#}
 
-
+    <form name="join">
+        이메일* &nbsp; &nbsp; &nbsp; <input id = "email1" type="text" name="email1" onfocus="this.value='';"> @
+        <input id = "email2" type="text" name="email2" value="" disabled>
+        <select name="email" onchange="email_change()">
+            <option value="0">선택하세요</option>
+            <option value="9">직접입력</option>
+            <option value="naver.com">naver.com</option>
+            <option value="nate.com">nate.com</option>
+        </select>
+    </form>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <button onclick="validate_email()">중복확인</button>
+
+    <br>
+    이름* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" class="form-control" id="name">
     <br>
     <br>
-    이름*<input type="text" class="form-control" id="name">
+    비밀번호* &nbsp; &nbsp; &nbsp;<input type="password" class="form-control" id="password1" onchange="check_pw()">
     <br>
     <br>
-    비밀번호*<input type="password" class="form-control" id="password1" onchange="check_pw()">
+    비밀번호 확인* <input type="password" class="form-control" id="password2" onchange="check_pw()">&nbsp;<span id="check"></span>
     <br>
     <br>
-    비밀번호 확인*<input type="password" class="form-control" id="password2" onchange="check_pw()">&nbsp;<span id="check"></span>
+    회사/직무/직책* <input type="text" class="company-form" id="company"> <input type="text" class="company-form" id="role"> <input type="text" class="company-form" id="position">
     <br>
     <br>
-    회사/직무/직책*<input type="text" class="company-form" id="company"> <input type="text" class="company-form" id="role"> <input type="text" class="company-form" id="position">
+    전화번호 &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" class="form-control" id="tel">
     <br>
     <br>
-    전화번호<input type="text" class="form-control" id="tel">
+    회사주소 &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" class="form-control" id="address">
+    <button onclick="api()">주소검색</button>
     <br>
     <br>
-    회사 주소<input type="text" class="form-control" id="address">
-    <button onclick="api()">주소</button>
-    <br>
-    <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <button onclick="new_member()" type="button" class="btn btn-primary">회원가입</button>
 </div>
 
