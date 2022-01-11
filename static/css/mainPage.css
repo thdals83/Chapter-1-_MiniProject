@@ -58,6 +58,7 @@
     margin: 16px 0;
     width: 100%;
     column-gap: 8px;
+    row-gap: 16px;
 }
 
 .main-page .card-list .card-item {

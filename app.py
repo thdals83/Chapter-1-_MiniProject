@@ -17,10 +17,28 @@ SECRET_KEY = 'SPARTA'
 
 @app.route('/')
 def home():
-    default_card_list = list(db.cards.find({'user_email': 'bbb@naver.com', 'card_bookmark': False}))
-    bookmark_card_list = list(db.cards.find({'user_email': 'bbb@naver.com', 'card_bookmark': True}))
-    print(default_card_list)
+    default_card_list = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 0}))
+    bookmark_card_list = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 1}))
+    # print(bookmark_card_list)
+
     return render_template('mainPage.html', default_card_list=default_card_list, bookmark_card_list=bookmark_card_list)
+
+
+@app.route('/api/sort', methods=['POST'])
+def api_sort():
+    action_receive = request.form['action_give']
+
+    filter_data = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 0}))
+
+    if action_receive == 'register':
+        return jsonify({'result': dumps(filter_data)})
+
+    elif action_receive == 'company':
+        arr = sorted(filter_data, key=itemgetter('card_company'))
+        return jsonify({'result': dumps(arr)})
+    elif action_receive == 'name':
+        arr = sorted(filter_data, key=itemgetter('card_name'))
+        return jsonify({'result': dumps(arr)})
 
 
 # 리스트 작성 창에서 리스트 양식 값들 받아오기
@@ -29,14 +47,14 @@ def api_pluscard():
     # db schedule에 들어갈 정보들 dictionary 작성
     useremail = request.form['useremail']
     card_emailid = request.form['card_emailid']
-    card_nameid = request.form['card_companyid']
+    card_nameid = request.form['card_nameid']
     card_companyid = request.form['card_companyid']
     card_roleid = request.form['card_roleid']
     card_positionid = request.form['card_positionid']
     card_telid = request.form['card_telid']
     card_addressid = request.form['card_addressid']
     card_descid = request.form['card_descid']
-    card_bookmarkid = request.form['card_bookmarkid']
+    card_bookmarkid = int(request.form['card_bookmarkid'])
 
     doc = {
         "email": useremail,
@@ -49,7 +67,9 @@ def api_pluscard():
         "card_tel": card_telid,
         "card_address": card_addressid,
         "card_desc": card_descid,
-        "card_bookmark": card_bookmarkid
+        "card_bookmark": card_bookmarkid,
+
+        "register_time": datetime.now().timestamp()
     }
     print(doc)
     # db에 저장하기
@@ -58,7 +78,7 @@ def api_pluscard():
 
 
 # 명함 삭제
-@app.route('/api/list', methods=["POST"])
+@app.route('/api/list/delete', methods=["POST"])
 def delete_card():
     card_id_receive = request.form['card_id_give']
     db.cards.delete_one({'_id': ObjectId(card_id_receive)})
@@ -71,12 +91,13 @@ def bookmark_card():
     card_id_receive = request.form['card_id_give']
     card = db.cards.find_one({'_id': ObjectId(card_id_receive)})
 
-    if card['card_bookmark'] is False:
-        db.cards.update_one({'_id': ObjectId(card_id_receive)}, {"$set": {'card_bookmark': True}})
+    if card['card_bookmark'] is 0:
+        db.cards.update_one({'_id': ObjectId(card_id_receive)}, {"$set": {'card_bookmark': 1}})
         return jsonify({'msg': '즐겨찾기 등록완료'})
     else:
-        db.cards.update_one({'_id': ObjectId(card_id_receive)}, {"$set": {'card_bookmark': False}})
+        db.cards.update_one({'_id': ObjectId(card_id_receive)}, {"$set": {'card_bookmark': 0}})
         return jsonify({'msg': '즐겨찾기 취소'})
+    # return jsonify({'result': user})
 
 
 # @app.route('/')
