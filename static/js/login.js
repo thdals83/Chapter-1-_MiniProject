@@ -1,13 +1,19 @@
+function register() {
+            window.location.href = "/register"
+        }
+
+
 function logIn() {
 
-    let val_email = $('#userid').val()
-    if (val_email.includes('@')) {
+    let id = $('#userid').val()
+    let password = $('#user_pw').val()
+
+
+    if (id.includes('@')) {
         $('#check-email').hide()
     } else
         $('#check-email').show()
-
-    let id = $('#userid').val()
-    let password = $('#userpw').val()
+        $('#userid').focus()
 
     if (id == "") {
         $('#check-id').show()
@@ -17,9 +23,9 @@ function logIn() {
         $('#check-id').hide()
     }
 
-if (password == "") {
+    if (password == "") {
         $('#check-password').show()
-        $('#userpw').focus()
+        $('#user_pw').focus()
         return;
     } else {
         $("#check-password").hide()
@@ -37,7 +43,7 @@ if (password == "") {
             //로그인 성공시
             if (response['result'] == 'success') {
                 $.cookie('mytoken', response['token'], {path: '/'});
-                window.location.replace('/')
+                window.location.replace('/login')
             } else {
                 //로그인 실패시
                 alert(response['msg']);
