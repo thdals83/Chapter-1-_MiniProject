@@ -56,46 +56,49 @@
     {% endblock %}
 </div>
 
-<div class="modal" id="modal" style="display:none" >
+<div class="modal" id="modal" style="display:none">
     <div class="modal_content">
         <div class="imgshape">
-            <p class="cardimg" ></p>
-            <button class="findbtn"> <b>이미지 찾기</b></button>
+            <p class="cardimg"></p>
+            <button class="findbtn"><b>이미지 찾기</b></button>
         </div>
 
         <div class="writepostion">
+
             <p class="titlecss"><b>이름 (필수)</b></p>
-        <p><input id="card_nameid" placeholder="이름 (필수)"></p>
-        <p id="help-name" style="color:red;"></p>
-            <p><b>이메일 (필수)</b></p>
-        <p><input id="card_emailid" placeholder="이메일 (필수)"></p>
-        <p id="help-email" style="color:red;"></p>
-            <p><b>전화번호 (필수)</b></p>
-        <p><input id="card_telid" placeholder="전화번호 (필수)"></p>
-        <p id="help-tel" style="color:red;"></p>
-            <p><b>회사 (필수)</b></p>
-        <input id="card_companyid" placeholder="회사 (필수)">
-        <p id="help-company" style="color:red;"></p>
-            <p><b>직무/직책</b></p>
-        <input id="card_roleid" placeholder="직무">
-        <input id="card_positionid" placeholder="직책">
-            <p><b>회사 주소</b></p>
+            <p><input class="inputcss" id="card_nameid" placeholder=" 이름"></p>
+            <p class="help-namecss"  id="help-name" style="color:red;"></p>
+            <p class="titlecss2"><b>이메일 (필수)</b></p>
+            <p><input class="inputcss" id="card_emailid" placeholder=" example@ex.com"></p>
+            <p id="help-email" style="color:red;"></p>
+            <p class="titlecss3"><b>전화번호 (필수)</b></p>
+            <p><input class="inputcss" id="card_telid" placeholder=" 010-0000-0000"></p>
+            <p id="help-tel" style="color:red;"></p>
+            <p class="titlecss"><b>회사 (필수)</b></p>
 
-        <input type="text" id="card_addressid" placeholder="회사 주소">
-            <button onclick="find_address()">주소 찾기</button>
+            <input class="inputcss2" id="card_companyid" placeholder=" 회사">
+            <p  id="help-company" style="color:red;"></p>
+            <p class="titlecss4"><b>직무/직책</b></p>
+            <div class="setcss">
+                <input class="inputcss3" id="card_roleid" placeholder=" 직무">
+                <input class="inputcss3" id="card_positionid" placeholder=" 직책">
+            </div>
 
-            <p><b>상세 정보</b></p>
-        <input id="card_descid" placeholder="상세 정보">
-        <p></p>
-        <button onclick="closebtn()">취소</button>
-        <button onclick="checkbtn()">명함 등록</button>
+            <p class="titlecss4"><b>회사 주소</b></p>
+
+            <input class="inputcss4" type="text" id="card_addressid" placeholder=" 회사 주소">
+            <button class="jusocss" onclick="find_address()"><b>주소 찾기</b></button>
+
+            <p class="titlecss4"><b>상세 정보</b></p>
+            <textarea class="inputcss5" id="card_descid" placeholder=" 상세 정보"></textarea>
+
+            <button class="clearcss" onclick="checkbtn()"><b>명함 등록</b></button>
         </div>
-
-
+        <button class="cancelcss" onclick="closebtn()"></button>
     </div>
 </div>
 
-<div class="modal" id="modaledit" style="display:none" >
+<div class="modal" id="modaledit" style="display:none">
     <div class="modal_content">
         <input type="text" id="hide_id" style="display: none">
         <p>이름(필수)<input type="text" id="use_card_nameid" placeholder="이름 (필수)"></p>
