@@ -114,7 +114,13 @@
 }
 
 .main-page .card-list .card-item .delete-button {
-    text-align: right;
+    /*text-align: right;*/
+}
+
+.main-page .card-list .card-item .btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .main-page .card-list .card-item .delete-button:hover i {
@@ -125,4 +131,12 @@
     font-size: 1.2rem;
     color: var(--gray400);
     transition: all 0.2s ease;
+}
+
+.no-search-data {
+
+}
+
+.view-detail {
+
 }

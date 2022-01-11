@@ -17,6 +17,10 @@
     padding: 10px 30px;
     flex: 1;
 }
+
+.header-wrapper .header button:last-child {
+    margin-left: 10px;
+}
 .header-wrapper .header .logo {
     color: white;
     flex: 1;

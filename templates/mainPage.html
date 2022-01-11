@@ -5,7 +5,7 @@
 
 
 {% block content %}
-    <header class="header-wrapper">
+<header class="header-wrapper">
     <section class="header">
         <div class="logo">LOGO</div>
         <div class="user-name">홍길동 님</div>
@@ -21,35 +21,38 @@
                 <div class="header-right-area">
                     <div class="search-area">
                         <div class="select">
-                            <select>
-                                <option>소속</option>
-                                <option>이름</option>
-                                <option>직책</option>
-                                <option>직무</option>
-                                <option>전화번호</option>
-                                <option>이메일</option>
+
+                            <select id="bookmark-search-list">
+                               <option value="company">회사</option>
+                                <option value="name">이름</option>
+                                <option value="position">직책</option>
+                                <option value="role">직무</option>
+                                <option value="tel">전화번호</option>
+                                <option value="email">이메일</option>
                             </select>
                         </div>
 
-                        <input class="input" aria-label="search-box" type="text" placeholder="검색어를 입력해주세요"/>
+                        <input class="input" aria-label="search-box" type="text" id="bookmark-search" onkeyup="handleSearchKeyBookmark()" placeholder="검색어를 입력해주세요"/>
 
                     </div>
 
                     <div class="sort-area">
                         <span>정렬 선택</span>
                         <div class="select">
-                            <select class="h-select sort-select">
-                                {% for value in sort_options %}
-                                    <option value="{{ value }}">{{ value }}</option>
-                                {% endfor %}>
-                            </select>
+
+                            <select class="h-select sort-select" id="sort-list-select" onchange="handleChangeBookmarkListSelect(this.value)">
+                            <option value="register">등록순</option>
+                            <option value="company">회사명</option>
+                            <option value="name">이름순(가나다순)</option>
+                        </select>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div aria-label="bookmark-list" class="card-list bookmark-list">
+            <div aria-label="bookmark-list" class="card-list bookmark-list" id="bookmark-list">
+
                 {% for card in bookmark_card_list %}
                     <div aria-label="card-item" class="card-item">
                         {% if card.card_bookmark == 1 %}
@@ -89,11 +92,12 @@
                                 <div>이메일</div>
                                 <div>{{ card.card_email }}</div>
                             </div>
-                            <!--삭제버튼 빼는게 나을 수도 -->
-                            <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
-                                <i class="bi bi-trash-fill"></i>
+                            <div class="btn-wrapper">
+                                <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
+                                    <i class="bi bi-trash-fill"></i>
+                                </div>
+                                <button class="button is-primary view-detail">상세보기</button>
                             </div>
-                            <!--<button  class="button is-danger">삭제</button>-->
                         </div>
                     </div>
                 {% endfor %}
@@ -107,24 +111,25 @@
             <div class="header-right-area">
                 <div class="search-area">
                     <div class="select">
-                        <select>
-                            <option>소속</option>
-                            <option>이름</option>
-                            <option>직책</option>
-                            <option>직무</option>
-                            <option>전화번호</option>
-                            <option>이메일</option>
+                        <select id="default-search-select">
+                            <option value="company">회사</option>
+                            <option value="name">이름</option>
+                            <option value="position">직책</option>
+                            <option value="role">직무</option>
+                            <option value="tel">전화번호</option>
+                            <option value="email">이메일</option>
                         </select>
                     </div>
 
-                    <input class="input" aria-label="search-box" type="text" placeholder="검색어를 입력해주세요"/>
+                    <input class="input" aria-label="search-box" type="text" id="default-search" onkeyup="handleSearchKey()" placeholder="검색어를 입력해주세요"/>
 
                 </div>
 
                 <div class="sort-area">
                     <span>정렬 선택</span>
                     <div class="select">
-                        <select class="h-select sort-select" id="sort-list-select" onchange="handleClickSelect(this.value)">
+
+                        <select class="h-select sort-select" id="sort-list-select" onchange="handleChangeSelect(this.value)">
                             <option value="register">등록순</option>
                             <option value="company">회사명</option>
                             <option value="name">이름순(가나다순)</option>
@@ -178,8 +183,12 @@
                             <div>이메일</div>
                             <div>{{ card.card_email }}</div>
                         </div>
-                        <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
-                            <i class="bi bi-trash-fill"></i>
+
+                        <div class="btn-wrapper">
+                            <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
+                                <i class="bi bi-trash-fill"></i>
+                            </div>
+                            <button class="button is-primary view-detail">상세보기</button>
                         </div>
                     </div>
                 </div>
