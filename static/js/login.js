@@ -17,7 +17,7 @@ function logIn() {
         $('#check-id').hide()
     }
 
-  if (password == "") {
+if (password == "") {
         $('#check-password').show()
         $('#userpw').focus()
         return;
