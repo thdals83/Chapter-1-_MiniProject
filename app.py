@@ -24,21 +24,90 @@ def home():
     return render_template('mainPage.html', default_card_list=default_card_list, bookmark_card_list=bookmark_card_list)
 
 
+def get_word(select_word, input_word, bookmark):
+    return list(db.cards.find({'email': 'bbb@naver.com', select_word: {'$regex': input_word}, 'card_bookmark': bookmark}))
+
+
+@app.route('/api/search', methods=['POST'])
+def api_search():
+    select_receive = request.form['select_give']
+    input_receive = request.form['input_give']
+
+    if select_receive == 'company':
+        search_list = get_word('card_company', input_receive, 0)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'name':
+        search_list = get_word('card_name', input_receive, 0)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'position':
+        search_list = get_word('card_position', input_receive, 0)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'role':
+        search_list = get_word('card_role', input_receive, 0)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'tel':
+        search_list = get_word('card_tel', input_receive, 0)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'email':
+        search_list = get_word('card_email', input_receive, 0)
+        return jsonify({'result': dumps(search_list)})
+
+
+@app.route('/api/search/bookmark', methods=['POST'])
+def api_search_bookmark():
+    select_receive = request.form['select_give']
+    input_receive = request.form['input_give']
+
+    if select_receive == 'company':
+        search_list = get_word('card_company', input_receive, 1)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'name':
+        search_list = get_word('card_name', input_receive, 1)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'position':
+        search_list = get_word('card_position', input_receive, 1)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'role':
+        search_list = get_word('card_role', input_receive, 1)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'tel':
+        search_list = get_word('card_tel', input_receive, 1)
+        return jsonify({'result': dumps(search_list)})
+    elif select_receive == 'email':
+        search_list = get_word('card_email', input_receive, 1)
+        return jsonify({'result': dumps(search_list)})
+
+
 @app.route('/api/sort', methods=['POST'])
 def api_sort():
-    action_receive = request.form['action_give']
+    default_list_action_receive = request.form['default_list_action_give']
 
-    filter_data = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 0}))
+    default_list = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 0}))
 
-    if action_receive == 'register':
-        return jsonify({'result': dumps(filter_data)})
+    if default_list_action_receive == 'register':
+        return jsonify({'result': dumps(default_list)})
+    elif default_list_action_receive == 'company':
+        default_list = sorted(default_list, key=itemgetter('card_company'))
+        return jsonify({'result': dumps(default_list)})
+    elif default_list_action_receive == 'name':
+        default_list = sorted(default_list, key=itemgetter('card_name'))
+        return jsonify({'result': dumps(default_list)})
 
-    elif action_receive == 'company':
-        arr = sorted(filter_data, key=itemgetter('card_company'))
-        return jsonify({'result': dumps(arr)})
-    elif action_receive == 'name':
-        arr = sorted(filter_data, key=itemgetter('card_name'))
-        return jsonify({'result': dumps(arr)})
+
+@app.route('/api/sort/bookmark', methods=['POST'])
+def api_sort_bookmark():
+    bookmark_list_action_receive = request.form['bookmark_list_action_give']
+
+    bookmark_list = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 1}))
+
+    if bookmark_list_action_receive == 'register':
+        return jsonify({'result': dumps(bookmark_list)})
+    elif bookmark_list_action_receive == 'company':
+        bookmark_list = sorted(bookmark_list, key=itemgetter('card_company'))
+        return jsonify({'result': dumps(bookmark_list)})
+    elif bookmark_list_action_receive == 'name':
+        bookmark_list = sorted(bookmark_list, key=itemgetter('card_name'))
+        return jsonify({'result': dumps(bookmark_list)})
 
 
 # 리스트 작성 창에서 리스트 양식 값들 받아오기
