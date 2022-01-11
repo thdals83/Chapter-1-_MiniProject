@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    // sortList();
+})
+
 function handleClickDeleteCard(cardId) {
     console.log(cardId)
     $.ajax({
@@ -34,11 +38,13 @@ function handleClickBookmark(cardId) {
     })
 }
 
+
 function handleChangeSelect(action) {
     // const action = $(this).val();
     console.log(action);
     ajaxListSort(action)
 }
+
 
 function handleChangeBookmarkListSelect(action) {
     // const action = $(this).val();
@@ -84,7 +90,6 @@ function getListHtmls(data, idx) {
                 </div>
             </div>
         </div>`
-
 }
 
 function getAllLists(listArr) {
@@ -213,3 +218,4 @@ function searchBookmark() {
 function getEmptyData() {
     return `<div class="no-search-data">검색 결과가 없습니다.</div>`
 }
+

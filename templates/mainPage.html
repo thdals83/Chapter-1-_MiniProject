@@ -21,6 +21,7 @@
                 <div class="header-right-area">
                     <div class="search-area">
                         <div class="select">
+
                             <select id="bookmark-search-list">
                                <option value="company">회사</option>
                                 <option value="name">이름</option>
@@ -38,6 +39,7 @@
                     <div class="sort-area">
                         <span>정렬 선택</span>
                         <div class="select">
+
                             <select class="h-select sort-select" id="sort-list-select" onchange="handleChangeBookmarkListSelect(this.value)">
                             <option value="register">등록순</option>
                             <option value="company">회사명</option>
@@ -50,6 +52,7 @@
 
 
             <div aria-label="bookmark-list" class="card-list bookmark-list" id="bookmark-list">
+
                 {% for card in bookmark_card_list %}
                     <div aria-label="card-item" class="card-item">
                         {% if card.card_bookmark == 1 %}
@@ -125,6 +128,7 @@
                 <div class="sort-area">
                     <span>정렬 선택</span>
                     <div class="select">
+
                         <select class="h-select sort-select" id="sort-list-select" onchange="handleChangeSelect(this.value)">
                             <option value="register">등록순</option>
                             <option value="company">회사명</option>
@@ -179,6 +183,7 @@
                             <div>이메일</div>
                             <div>{{ card.card_email }}</div>
                         </div>
+
                         <div class="btn-wrapper">
                             <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
                                 <i class="bi bi-trash-fill"></i>
