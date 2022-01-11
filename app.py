@@ -79,5 +79,53 @@ def bookmark_card():
         return jsonify({'msg': '즐겨찾기 취소'})
 
 
+# 로그인
+@app.route('/api/login', methods=['POST'])
+def api_login():
+    id_receive = request.form['id_give']
+    pw_receive = request.form['pw_give']
+
+    # pw를 암호화
+    pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
+
+    # 해당 유저 찾기
+    result = db.users.find_one({'id': id_receive, 'pw': pw_hash})
+
+
+    if result is not None:
+        #로그인 성공시
+        payload = {
+            'id': id_receive,
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60*24)
+        }
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
+
+        # token 주기
+        return jsonify({'result': 'success', 'token': token})
+
+    else:
+    #로그인 실패 시
+        return jsonify({'result': 'fail', 'msg': '아이디 또는 비밀번호가 일치하지 않습니다.'})
+
+#카드 페이지로 이동
+@app.route('/')
+def home2():
+	token_receive = request.cookies.get('mytoken')
+	try:
+		payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+		print(payload)
+		return render_template('mainPage.html')
+	except jwt.ExpiredSignatureError:
+		return redirect(url_for('login', msg='로그인 시간이 만료되었습니다.'))
+	except jwt.exceptions.DecodeError:
+		return redirect(url_for('login', msg='로그인 정보가 존재하지 않습니다.'))
+
+#로그인 페이지로 이동
+@app.route('/login')
+def login():
+    msg = request.args.get('msg')
+    return render_template('login.html', msg=msg)
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8080, debug=True)

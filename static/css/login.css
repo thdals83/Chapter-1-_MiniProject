@@ -1,0 +1,49 @@
+.container {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 100px;
+    width: 500px;
+}
+
+
+#image-box {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 100px;
+}
+
+#main-img {
+    width: 400px;
+    height: 400px;
+}
+
+#check-email, #check-id, #check-password {
+    color: #ff0000;
+    text-align: left;
+    font-size: 12px;
+    display: none;
+}
+
+.button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.label {
+    text-align: left;
+}
+
+.join-txt {
+    text-align: left;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.join-txt a {
+    margin-left: 10px;
+    font-weight: bold;
+}
