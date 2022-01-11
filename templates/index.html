@@ -58,25 +58,39 @@
 
 <div class="modal" id="modal" style="display:none" >
     <div class="modal_content">
+        <div class="imgshape">
+            <p class="cardimg" ></p>
+            <button class="findbtn"> <b>이미지 찾기</b></button>
+        </div>
+
+        <div class="writepostion">
+            <p class="titlecss"><b>이름 (필수)</b></p>
         <p><input id="card_nameid" placeholder="이름 (필수)"></p>
         <p id="help-name" style="color:red;"></p>
+            <p><b>이메일 (필수)</b></p>
         <p><input id="card_emailid" placeholder="이메일 (필수)"></p>
         <p id="help-email" style="color:red;"></p>
+            <p><b>전화번호 (필수)</b></p>
         <p><input id="card_telid" placeholder="전화번호 (필수)"></p>
         <p id="help-tel" style="color:red;"></p>
+            <p><b>회사 (필수)</b></p>
         <input id="card_companyid" placeholder="회사 (필수)">
         <p id="help-company" style="color:red;"></p>
+            <p><b>직무/직책</b></p>
         <input id="card_roleid" placeholder="직무">
         <input id="card_positionid" placeholder="직책">
-        <p></p>
+            <p><b>회사 주소</b></p>
 
-        <p><input type="text" id="card_addressid" placeholder="회사 주소">
+        <input type="text" id="card_addressid" placeholder="회사 주소">
             <button onclick="find_address()">주소 찾기</button>
-        </p>
-        <p><input id="card_descid" placeholder="상세 정보"></p>
 
+            <p><b>상세 정보</b></p>
+        <input id="card_descid" placeholder="상세 정보">
+        <p></p>
         <button onclick="closebtn()">취소</button>
         <button onclick="checkbtn()">명함 등록</button>
+        </div>
+
 
     </div>
 </div>

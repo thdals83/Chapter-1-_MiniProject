@@ -20,7 +20,6 @@ def home():
     bookmark_card_list = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 1}))
     return render_template('mainPage.html', default_card_list=default_card_list, bookmark_card_list=bookmark_card_list)
 
-
 @app.route('/api/pluscard', methods=['POST'])
 def api_pluscard():
     # db schedule에 들어갈 정보들 dictionary 작성
@@ -33,10 +32,7 @@ def api_pluscard():
     card_telid = request.form['card_telid']
     card_addressid = request.form['card_addressid']
     card_descid = request.form['card_descid']
-
-    print(request.form['card_bookmarkid'])
     card_bookmarkid = int(request.form['card_bookmarkid'])
-    print(card_bookmarkid)
 
     doc = {
         "email": useremail,
@@ -51,7 +47,6 @@ def api_pluscard():
         "card_desc": card_descid,
         "card_bookmark": card_bookmarkid
     }
-    print(doc)
     # db에 저장하기
     db.cards.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '등록 성공하였습니다.'})
@@ -82,11 +77,9 @@ def api_editcard():
         "card_desc": use_card_descid,
         # "card_bookmark": use_card_bookmarkid
     }
-    print(doc)
     # db에 저장하기
     db.cards.update_one({'_id':ObjectId(hide_id)}, {'$set':doc})
     return jsonify({'result': 'success', 'msg': ' 수정 성공하였습니다.'})
-
 
 
 # 명함 삭제
