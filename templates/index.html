@@ -30,6 +30,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- Custom style -->
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
@@ -46,6 +47,11 @@
     <script type="text/javascript" src="/static/js/login.js"></script>
 
 
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
+
     <!-- favicon -->
     <!--<link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">-->
 
@@ -59,30 +65,106 @@
     {% endblock %}
 </div>
 
-<div class="modal" id="modal">
+<div class="modal" id="modal" style="display:none">
     <div class="modal_content">
-        <p><input id="card_nameid" placeholder="이름 (필수)"></p>
-        <p id="help-name" style="color:red;"></p>
-        <p><input id="card_emailid" placeholder="이메일 (필수)"></p>
-        <p id="help-email" style="color:red;"></p>
-        <p><input id="card_telid" placeholder="전화번호 (필수)"></p>
-        <p id="help-tel" style="color:red;"></p>
-        <input id="card_companyid" placeholder="회사 (필수)">
-        <p id="help-company" style="color:red;"></p>
-        <input id="card_roleid" placeholder="직무">
-        <input id="card_positionid" placeholder="직책">
-        <p></p>
+        <div class="imgshape">
+            <img id="preview" class="cardimg"></img>
+            <input class="chooseFile file" type="file" id="file" accept="image/*" onchange="loadFile(this)">
+            <!--            <input class="chooseFile file" type="file" id="file">-->
+            <div class="findbtn">
+                <label for="file"><b>이미지 찾기</b></label>
+            </div>
+        </div>
 
-        <p><input type="text" id="card_addressid" placeholder="회사 주소">
-            <button onclick="find_address()">주소 찾기</button>
-        </p>
-        <p><input id="card_descid" placeholder="상세 정보"></p>
+        <div class="writepostion">
 
-        <button onclick="closebtn()">취소</button>
-        <button onclick="checkbtn()">명함 등록</button>
+            <p class="titlecss"><b>이름 (필수)</b></p>
+            <p><input class="inputcss" id="card_nameid" placeholder=" 이름"></p>
+            <p class="help-namecss" id="help-name"></p>
 
+            <p class="titlecss2"><b>이메일 (필수)</b></p>
+            <p><input class="inputcss" id="card_emailid" placeholder=" example@ex.com"></p>
+            <p class="help-emailcss" id="help-email"></p>
+
+            <p class="titlecss3"><b>전화번호 (필수)</b></p>
+            <p><input class="inputcss" id="card_telid" placeholder=" 010-0000-0000"></p>
+            <p class="help-telcss" id="help-tel"></p>
+
+            <p class="titlecss"><b>회사 (필수)</b></p>
+            <p><input class="inputcss2" id="card_companyid" placeholder=" 회사"></p>
+            <p class="help-companycss" id="help-company"></p>
+
+            <p class="titlecss4"><b>직무/직책</b></p>
+            <div class="setcss">
+                <input class="inputcss3" id="card_roleid" placeholder=" 직무">
+                <input class="inputcss3" id="card_positionid" placeholder=" 직책">
+            </div>
+
+            <p class="titlecss4"><b>회사 주소</b></p>
+
+            <input class="inputcss4" type="text" id="card_addressid" placeholder=" 회사 주소">
+            <button class="jusocss" onclick="find_address()"><b>주소 찾기</b></button>
+
+            <p class="titlecss4"><b>상세 정보</b></p>
+            <textarea class="inputcss5" id="card_descid" placeholder=" 상세 정보"></textarea>
+
+            <button class="clearcss" onclick="checkbtn()"><b>명함 등록</b></button>
+        </div>
+        <button class="cancelcss" onclick="closebtn()"></button>
     </div>
 </div>
+
+<div class="modal" id="modaledit" style="display:none">
+    <div class="modal_content">
+        <div class="imgshape">
+
+            <img id="preview2" class="cardimg">
+            <input class="chooseFile file2" type="file" id="file2" accept="image/*" onchange="loadFile2(this)">
+            <!--            <input class="chooseFile file" type="file" id="file">-->
+            <div class="findbtn">
+                <label for="file2"><b>이미지 찾기</b></label>
+            </div>
+        </div>
+
+        <div class="writepostion">
+            <input type="text" id="hide_id" style="display: none">
+
+            <p class="titlecss"><b>이름 (필수)</b></p>
+            <p><input class="inputcss" type="text" id="use_card_nameid" placeholder=" 이름"></p>
+            <p class="help-namecss" id="use_helpname"></p>
+
+            <p class="titlecss2"><b>이메일 (필수)</b></p>
+            <p><input class="inputcss" type="text" id="use_card_emailid" placeholder=" example@ex.com"></p>
+            <p class="help-emailcss" id="use_helpemail"></p>
+
+            <p class="titlecss3"><b>전화번호 (필수)</b></p>
+            <p><input class="inputcss" type="text" id="use_card_telid" placeholder="전화번호 (필수)"></p>
+            <p class="help-telcss" id="use_helptel"></p>
+
+            <p class="titlecss"><b>회사 (필수)</b></p>
+            <p><input class="inputcss2" type="text" id="use_card_companyid" placeholder="회사 (필수)">
+            <p class="help-companycss" id="use_helpcompany"></p>
+
+            <p class="titlecss4"><b>직무/직책</b></p>
+            <div class="setcss">
+                <input class="inputcss3" id="use_card_roleid" placeholder=" 직무">
+                <input class="inputcss3" id="use_card_positionid" placeholder=" 직책">
+            </div>
+
+            <p class="titlecss4"><b>회사 주소</b></p>
+            <input class="inputcss4" type="text" type="text" id="use_card_addressid" placeholder=" 회사 주소">
+            <button class="jusocss" onclick="find_address2()"><b>주소 찾기</b></button>
+
+            <p class="titlecss4"><b>상세 정보</b></p>
+            <textarea class="inputcss5" id="use_card_descid" placeholder=" 상세 정보"></textarea>
+
+            <button class="clearcss" onclick="editbtn()"><b>수정</b></button>
+
+        </div>
+        <button class="cancelcss" onclick="cardclick_closebtn()"></button>
+    </div>
+</div>
+
 </body>
 
 </html>
