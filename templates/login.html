@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'index.html' %}
 
-    <title>Business card wallet</title>
+{% block content%}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
-
-    <!-- Bulma CSS 링크 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <!-- CSS 링크 -->
-    <link rel="stylesheet" href="../static/css/login.css">
-
-
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="../static/js/login.js"></script>
-
-
-
-</head>
-<body>
-
-    <div class="section has-text-centered">
+    <div class="login-section has-text-centered">
         <div id="image-box">
             <img id="main-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC7Mwrp1zDTUkNEpb7yL211qvmvxtAlleTMA&usqp=CAU" alt="이미지" style="">
         </div>
@@ -63,13 +35,11 @@
                     </div>
                 </div>
             </div>
-            <button class="button is-primary" onclick="logIn()">로그인</button>
+            <button class="button is-primary login" onclick="logIn()">로그인</button>
             <p class="join-txt">
                 <span>아직 회원이 아니신가요?</span><a onclick="register()">회원가입</a>
             </p>
         </div>
     </div>
 
-
-</body>
-</html>
+{% endblock %}
