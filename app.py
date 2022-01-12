@@ -20,11 +20,6 @@ def home():
     bookmark_card_list = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 1}))
     return render_template('mainPage.html', default_card_list=default_card_list, bookmark_card_list=bookmark_card_list)
 
-@app.route('/api/uploader', methods = ['POST'])
-def upload_file():
-    res = request.form
-    print(res)
-    return 'file uploaded successfully'
 
 @app.route('/api/pluscard', methods=['POST'])
 def api_pluscard():
@@ -40,6 +35,16 @@ def api_pluscard():
     card_descid = request.form['card_descid']
     card_bookmarkid = int(request.form['card_bookmarkid'])
 
+    file = request.files['file']
+    extension = file.filename.split('.')
+    today = datetime.now()
+    mytime = today.strftime('%Y년%m월%d일%H:%M:%S')
+    filename = f'{mytime}-{extension[0]}'
+    filename = "".join(i for i in filename if i not in "\/:*?<>|")
+    filename = filename.strip()
+    save_to = f'static/images/{filename}.{extension[1]}.jpg'
+    file.save(save_to)
+
     doc = {
         "email": useremail,
         "card_email": card_emailid,
@@ -51,7 +56,8 @@ def api_pluscard():
         "card_tel": card_telid,
         "card_address": card_addressid,
         "card_desc": card_descid,
-        "card_bookmark": card_bookmarkid
+        "card_bookmark": card_bookmarkid,
+        "imgurl": f'{filename}.{extension[1]}.jpg'
     }
     # db에 저장하기
     db.cards.insert_one(doc)

@@ -21,7 +21,6 @@ function cardclick(id) {
         data: {'getcard_id': id},
         success: function (response) {
             let cardinfo = response["cardinfo"]
-            console.log(cardinfo)
             document.getElementById("use_card_nameid").value = cardinfo[0]["card_name"]
             document.getElementById("use_card_emailid").value = cardinfo[0]["card_email"]
             document.getElementById("use_card_telid").value = cardinfo[0]["card_tel"]
@@ -107,6 +106,26 @@ function checkbtn() {
     let card_emailid = $("#card_emailid").val();
     let card_bookmarkid = 0
 
+    let fileInput = document.getElementsByClassName("file");
+    let filename = fileInput[0].files[0].name
+    let file = $('#file')[0].files[0]
+
+    let form_data = new FormData()
+
+    form_data.append("file",file)
+    form_data.append("filename",filename)
+
+    form_data.append("useremail",useremail)
+    form_data.append("card_nameid",card_nameid)
+    form_data.append("card_companyid",card_companyid)
+    form_data.append("card_roleid",card_roleid)
+    form_data.append("card_positionid",card_positionid)
+    form_data.append("card_telid",card_telid)
+    form_data.append("card_addressid",card_addressid)
+    form_data.append("card_descid",card_descid)
+    form_data.append("card_emailid",card_emailid)
+    form_data.append("card_bookmarkid",card_bookmarkid)
+
 
     if (card_nameid === "") {
         $("#help-name").text("이름을 입력해주세요.")
@@ -114,21 +133,18 @@ function checkbtn() {
     } else {
         $("#help-name").text("")
     }
-
     if (card_emailid === "") {
         $("#help-email").text("이메일을 입력해주세요.")
         return;
     } else {
         $("#help-email").text("")
     }
-
     if (card_telid === "") {
         $("#help-tel").text("전화번호를 입력해주세요.")
         return;
     } else {
         $("#help-tel").text("")
     }
-
     if (card_companyid === "") {
         $("#help-company").text("회사를 입력해주세요.")
         return;
@@ -137,40 +153,15 @@ function checkbtn() {
     $.ajax({
         type: "POST",
         url: "/api/pluscard",
-        data: {
-            useremail: useremail,
-            card_nameid: card_nameid,
-            card_companyid: card_companyid,
-            card_roleid: card_roleid,
-            card_positionid: card_positionid,
-            card_telid: card_telid,
-            card_addressid: card_addressid,
-            card_descid: card_descid,
-            card_bookmarkid: card_bookmarkid,
-            card_emailid: card_emailid,
-        },
+        data: form_data,
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function (response) {
             alert(response['msg']);
         }
     })
-
-
-    // var form = $('#preview')[0];
-    // var form = "Dd";
-
-    let fileInput = document.getElementsByClassName("file");
-    console.log(fileInput)
-    
-    let formData = new FormData()
-    $.ajax({
-        url: '/api/uploader',
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false
-    })
-
-    // window.location.reload()
+    window.location.reload()
 }
 
 function find_address() {
