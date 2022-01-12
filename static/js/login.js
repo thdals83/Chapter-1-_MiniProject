@@ -6,7 +6,7 @@ function register() {
 function logIn() {
 
     let id = $('#userid').val()
-    let password = $('#user_pw').val()
+    let password = $('#userpw').val()
 
 
     if (id.includes('@')) {
@@ -25,7 +25,7 @@ function logIn() {
 
     if (password == "") {
         $('#check-password').show()
-        $('#user_pw').focus()
+        $('#userpw').focus()
         return;
     } else {
         $("#check-password").hide()
@@ -43,10 +43,14 @@ function logIn() {
             //로그인 성공시
             if (response['result'] == 'success') {
                 $.cookie('mytoken', response['token'], {path: '/'});
-                window.location.replace('/login')
+                alert('로그인 완료!')
+                window.location.replace('/index')
+            } else if (id === '' || pw === '') {
+                alert('아이디 또는 비밀번호를 입력해주세요')
             } else {
                 //로그인 실패시
                 alert(response['msg']);
+                window.location.replace('/register')
             }
         }
     })
