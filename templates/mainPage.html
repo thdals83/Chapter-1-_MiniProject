@@ -90,7 +90,7 @@
                                 <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
                                     <i class="bi bi-trash-fill"></i>
                                 </div>
-                                <button class="button view-detail">상세보기</button>
+                                <button class="button view-detail" onclick="cardclick(this.id)" id="{{card._id}}">상세보기</button>
                             </div>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
                             <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
                                 <i class="bi bi-trash-fill"></i>
                             </div>
-                            <button class="button view-detail">상세보기</button>
+                            <button class="button view-detail" onclick="cardclick(this.id)" id="{{card._id}}">상세보기</button>
                         </div>
                     </div>
                 </div>

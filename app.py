@@ -177,6 +177,16 @@ def api_pluscard():
     card_descid = request.form['card_descid']
     card_bookmarkid = int(request.form['card_bookmarkid'])
 
+    file = request.files['file']
+    extension = file.filename.split('.')
+    today = datetime.now()
+    mytime = today.strftime('%Y년%m월%d일%H:%M:%S')
+    filename = f'{mytime}-{extension[0]}'
+    filename = "".join(i for i in filename if i not in "\/:*?<>|")
+    filename = filename.strip()
+    save_to = f'static/images/{filename}.{extension[1]}.jpg'
+    file.save(save_to)
+
     doc = {
         "email": useremail,
         "card_email": card_emailid,
@@ -189,13 +199,51 @@ def api_pluscard():
         "card_address": card_addressid,
         "card_desc": card_descid,
         "card_bookmark": card_bookmarkid,
-
+        "imgurl": f'{filename}.{extension[1]}.jpg',
         "register_time": datetime.now().timestamp()
     }
-    print(doc)
     # db에 저장하기
     db.cards.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '등록 성공하였습니다.'})
+
+@app.route('/api/editcard', methods=['POST'])
+def api_editcard():
+    use_card_nameid = request.form['use_card_nameid']
+    use_card_emailid = request.form['use_card_emailid']
+    use_card_telid = request.form['use_card_telid']
+    use_card_companyid = request.form['use_card_companyid']
+    use_card_roleid = request.form['use_card_roleid']
+    use_card_positionid = request.form['use_card_positionid']
+    use_card_addressid = request.form['use_card_addressid']
+    use_card_descid = request.form['use_card_descid']
+
+    hide_id = request.form['hide_id']
+
+    file = request.files['file']
+    extension = file.filename.split('.')
+    today = datetime.now()
+    mytime = today.strftime('%Y년%m월%d일%H:%M:%S')
+    filename = f'{mytime}-{extension[0]}'
+    filename = "".join(i for i in filename if i not in "\/:*?<>|")
+    filename = filename.strip()
+    save_to = f'static/images/{filename}.{extension[1]}.jpg'
+    file.save(save_to)
+
+    doc = {
+        "card_email": use_card_emailid,
+        # 카드 이미지 추가
+        "card_name": use_card_nameid,
+        "card_company": use_card_companyid,
+        "card_role": use_card_roleid,
+        "card_position": use_card_positionid,
+        "card_tel": use_card_telid,
+        "card_address": use_card_addressid,
+        "card_desc": use_card_descid,
+        "imgurl": f'{filename}.{extension[1]}.jpg',
+    }
+    # db에 저장하기
+    db.cards.update_one({'_id':ObjectId(hide_id)}, {'$set':doc})
+    return jsonify({'result': 'success', 'msg': ' 수정 성공하였습니다.'})
 
 
 # 명함 삭제
@@ -205,6 +253,13 @@ def delete_card():
     db.cards.delete_one({'_id': ObjectId(card_id_receive)})
     return jsonify({'msg': 'delete!'})
 
+# 명함 찾기
+@app.route('/api/getcard', methods=["POST"])
+def get_card():
+    getcard_id = request.form['getcard_id']
+    cardinfo =  list(db.cards.find({'_id': ObjectId(getcard_id)}))
+    cardinfo[0]['_id'] = str(cardinfo[0]['_id'])
+    return jsonify({'cardinfo': cardinfo})
 
 # 명함 즐겨찾기 등록 및 취소
 @app.route('/api/list/bookmark', methods=["POST"])
