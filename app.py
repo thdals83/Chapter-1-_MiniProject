@@ -34,6 +34,8 @@ def api_pluscard():
     card_descid = request.form['card_descid']
     card_bookmarkid = int(request.form['card_bookmarkid'])
 
+
+
     doc = {
         "email": useremail,
         "card_email": card_emailid,

@@ -106,6 +106,7 @@ function checkbtn() {
     let card_descid = $("#card_descid").val();
     let card_emailid = $("#card_emailid").val();
     let card_bookmarkid = 0
+    let imgfile = document.getElementById('preview').src
 
     if (card_nameid === "") {
         $("#help-name").text("이름을 입력해주세요.")
@@ -146,7 +147,7 @@ function checkbtn() {
             card_addressid: card_addressid,
             card_descid: card_descid,
             card_bookmarkid: card_bookmarkid,
-            card_emailid: card_emailid
+            card_emailid: card_emailid,
         },
         success: function (response) {
             alert(response['msg']);
@@ -170,4 +171,19 @@ function find_address2() {
             document.getElementById("use_card_addressid").value = data.address
         }
     }).open();
+}
+
+function loadFile(input){
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('preview').src = e.target.result;
+        };
+        console.log(reader)
+        reader.readAsDataURL(input.files[0]);
+    }
+    else {
+        document.getElementById('preview').src = "";
+    }
 }
