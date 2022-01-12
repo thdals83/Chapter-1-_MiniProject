@@ -3,10 +3,9 @@
 {% block content %}
     <header class="header-wrapper">
         <section class="header">
-            <div class="logo">Business card wallet</div>
-            <div class="user-name">홍길동 님</div>
-            <button class="button is-small">login</button>
-            <button class="button is-small">logout</button>
+            <div class="logo click" onclick="location.reload()">Business card wallet</div>
+            <div class="user-name">{{ user_name }} 님</div>
+            <button class="button is-small" onclick="signOut()">logout</button>
         </section>
     </header>
     <section class="main-page">
@@ -60,8 +59,8 @@
                             </div>
                         {% endif %}
 
-                        {% if card_imgs in card %}
-                            <img src="" class="card-image"/>
+                        {% if card.imgurl %}
+                        <img src="{{ url_for('static' , filename='images/' + card.imgurl) }}" class="card-image"/>
                         {% else %}
                             <img src="/static/images/noimg.png" class="card-image"/>
                         {% endif %}
@@ -152,8 +151,8 @@
                         </div>
                     {% endif %}
 
-                    {% if card_imgs in card %}
-                        <img src="" class="card-image"/>
+                    {% if card.imgurl %}
+                        <img src="{{ url_for('static' , filename='images/' + card.imgurl) }}" class="card-image"/>
                     {% else %}
                         <img src="/static/images/noimg.png" class="card-image"/>
                     {% endif %}

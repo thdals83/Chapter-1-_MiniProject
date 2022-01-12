@@ -23,14 +23,10 @@ function handleClickBookmark(cardId) {
 }
 
 function handleChangeSelect(action) {
-    // const action = $(this).val();
-    console.log(action);
     ajaxListSort(action)
 }
 
 function handleChangeBookmarkListSelect(action) {
-    // const action = $(this).val();
-    console.log(action);
     ajaxListSortBookmark(action)
 }
 
@@ -86,7 +82,7 @@ function ajaxListSort(action) {
         type: "POST",
         url: "/api/sort",
         data: {
-            default_list_action_give: action,
+            action_give: action,
         },
         success: function (response) {
             const defaultList = JSON.parse(response.result);
@@ -104,7 +100,7 @@ function ajaxListSortBookmark(action) {
         type: "POST",
         url: "/api/sort/bookmark",
         data: {
-            bookmark_list_action_give: action,
+            action_give: action,
         },
         success: function (response) {
             const bookmarkList = JSON.parse(response.result);
@@ -130,10 +126,10 @@ function getBookmarkIcon(data) {
 }
 
 function getCardImg(data) {
-    if (typeof data.card_imgs === 'undefined') {
+    if (typeof data.imgurl === 'undefined') {
         return `<img src="/static/images/noimg.png" class="card-image"/>`
     } else {
-        return `<img src="" class="card-image"/>`
+        return `<img src="static/images/${data.imgurl}" class="card-image"/>`
     }
 }
 
@@ -150,6 +146,27 @@ function handleSearchKeyBookmark() {
     }
 }
 
+
+function makeSearchList(searchList, elementId, element) {
+
+        if (searchList.length === 0) {
+            $(elementId).empty();
+            element.style.gridTemplateColumns = '1fr';
+            return $(elementId).append(getEmptyData());
+        }
+        const searchAllListHtmls = getAllLists(searchList);
+        element.style.gridTemplateColumns = '1fr 1fr 1fr 1fr';
+        $(elementId).html(searchAllListHtmls);
+}
+
+
+function getEmptyData() {
+    return `<div class="no-search-data">
+                <i class="bi bi-exclamation-circle"></i>
+                <span>검색 결과가 없습니다.</span>
+            </div>`
+}
+
 function searchDefault() {
     const select = $("#default-search-select").val();
     const input = $("#default-search").val();
@@ -164,15 +181,7 @@ function searchDefault() {
         success: function (response) {
             const searchList = JSON.parse(response.result);
             const cardList = document.getElementById('card-list');
-
-            if (searchList.length === 0) {
-                $('#card-list').empty();
-                cardList.style.gridTemplateColumns = '1fr';
-                return $('#card-list').append(getEmptyData());
-            }
-            const searchAllListHtmls = getAllLists(searchList);
-            cardList.style.gridTemplateColumns = '1fr 1fr 1fr 1fr';
-            $('#card-list').html(searchAllListHtmls);
+            makeSearchList(searchList, '#card-list', cardList)
         }
     })
 }
@@ -193,22 +202,14 @@ function searchBookmark() {
         success: function (response) {
             const searchList = JSON.parse(response.result);
             const bookmarkList = document.getElementById('bookmark-list');
-
-            if (searchList.length === 0) {
-                $('#bookmark-list').empty();
-                bookmarkList.style.gridTemplateColumns = '1fr';
-                return $('#bookmark-list').append(getEmptyData());
-            }
-            const searchAllListHtmls = getAllLists(searchList);
-            bookmarkList.style.gridTemplateColumns = '1fr 1fr 1fr 1fr';
-            $('#bookmark-list').html(searchAllListHtmls);
+            makeSearchList(searchList, '#bookmark-list', bookmarkList)
         }
     })
 }
 
-function getEmptyData() {
-    return `<div class="no-search-data">
-                <i class="bi bi-exclamation-circle"></i>
-                <span>검색 결과가 없습니다.</span>
-            </div>`
+
+function signOut() {
+    $.removeCookie('mytoken', {path: '/'})
+    alert('로그아웃')
+    window.location.href = "/login"
 }
