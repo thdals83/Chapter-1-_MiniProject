@@ -2,13 +2,13 @@ from flask import Flask, render_template, jsonify, request, session, redirect, u
 
 # 회원가입 시, 비밀번호를 암호화
 import hashlib
-import bcrypt
+# import bcrypt
 from bson.json_util import dumps
 from operator import itemgetter
 # JWT 패키지
 import jwt
 from bson import ObjectId
-import datetime
+from datetime import datetime, timedelta
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -99,7 +99,7 @@ def api_login():
         #로그인 성공시
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=60 * 60)
+            'exp': datetime.utcnow() + timedelta(seconds=60 * 60)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         # token 주기
@@ -115,14 +115,14 @@ def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
+        # print(payload)
         user_name = db.users.find_one({"email": payload['id']})['name']
 
         default_card_list = get_card_list(0)
         bookmark_card_list = get_card_list(1)
         # print(bookmark_card_list)
 
-        print(default_card_list)
+        # print(default_card_list)
 
         return render_template('mainPage.html', default_card_list=default_card_list, bookmark_card_list=bookmark_card_list, user_name=user_name)
     except jwt.ExpiredSignatureError:
@@ -165,6 +165,11 @@ def api_sort_bookmark():
 # 리스트 작성 창에서 리스트 양식 값들 받아오기
 @app.route('/api/pluscard', methods=['POST'])
 def api_pluscard():
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    userid = db.users.find_one({"email": payload['id']})['email']
+    print(userid)
+
     # db schedule에 들어갈 정보들 dictionary 작성
     useremail = request.form['useremail']
     card_emailid = request.form['card_emailid']
@@ -188,7 +193,7 @@ def api_pluscard():
     file.save(save_to)
 
     doc = {
-        "email": useremail,
+        "email": userid,
         "card_email": card_emailid,
         # 카드 이미지 추가
         "card_name": card_nameid,
@@ -334,4 +339,4 @@ def new_member_form():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=8080, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

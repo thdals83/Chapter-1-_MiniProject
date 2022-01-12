@@ -105,7 +105,8 @@ function editbtn() {
 }
 
 function checkbtn() {
-    let useremail = "bbb@naver.com"
+    let useremail = '{{user_email}}';
+    console.log(useremail)
     let card_nameid = $("#card_nameid").val();
     let card_companyid = $("#card_companyid").val();
     let card_roleid = $("#card_roleid").val();
