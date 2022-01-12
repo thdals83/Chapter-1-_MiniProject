@@ -64,3 +64,11 @@ function logIn() {
         }
     })
 }
+
+$(function () {
+        $('.input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                logIn();
+            }
+        });
+    });
