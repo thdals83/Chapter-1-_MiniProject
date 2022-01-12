@@ -24,6 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
             integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -36,35 +37,27 @@
     <link rel="stylesheet" type="text/css" href="/static/css/footer.css">
     <link rel="stylesheet" type="text/css" href="/static/css/mainPage.css">
     <link rel="stylesheet" type="text/css" href="/static/css/register.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
 
     <!-- Function js -->
     <!--    <script type="text/javascript" src="/static/js/script.js"></script>-->
     <script type="text/javascript" src="/static/js/main.js"></script>
     <script type="text/javascript" src="/static/js/register.js"></script>
+    <script type="text/javascript" src="/static/js/login.js"></script>
+
 
     <!-- favicon -->
     <!--<link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">-->
 
-    <title>Chapter 01</title>
+    <title>Business card wallet</title>
 
-
-    <style>
-        test {
-            background: red;
-        }
-    </style>
 </head>
 <body id="root">
-{#{% block header %}#}
-{#{% endblock %}#}
 
 <div class="content-wrapper">
     {% block content%}
     {% endblock %}
 </div>
-
-{#{% block footer %}#}
-{#{% endblock %}#}
 
 <div class="modal" id="modal">
     <div class="modal_content">

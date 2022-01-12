@@ -1,5 +1,6 @@
 .header-wrapper {
-    background: var(--gray800);
+    /*background: var(--gray200);*/
+    background: var(--custom-primary);
     position: fixed;
     top: 0;
     width: 100%;
@@ -17,10 +18,26 @@
     padding: 10px 30px;
     flex: 1;
 }
+.header-wrapper .header button {
+    background: none;
+    color: white;
+    border: 1px solid white;
+    transition: all 0.2s ease;
+}
+.header-wrapper .header button:hover {
+    background: white;
+    color: var(--custom-primary);
+}
+.header-wrapper .header button:last-child {
+    margin-left: 10px;
+}
 .header-wrapper .header .logo {
+    font-weight: 700;
+    font-size: 20px;
     color: white;
     flex: 1;
 }
 .header-wrapper .header .user-name {
     color: white;
+    font-weight: 700;
 }
