@@ -11,6 +11,8 @@ function logIn() {
 
     if (id.includes('@')) {
         $('#check-email').hide()
+    } else if ( id == '') {
+        $('#check-email').hide()
     } else
         $('#check-email').show()
         $('#userid').focus()
@@ -45,8 +47,6 @@ function logIn() {
                 $.cookie('mytoken', response['token'], {path: '/'});
                 alert('로그인 완료!')
                 window.location.replace('/index')
-            } else if (id === '' || pw === '') {
-                alert('아이디 또는 비밀번호를 입력해주세요')
             } else {
                 //로그인 실패시
                 alert(response['msg']);
