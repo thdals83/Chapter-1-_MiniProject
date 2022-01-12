@@ -1,7 +1,7 @@
 .main-page {
     max-width: 1280px;
     margin: 60px auto 0 auto;
-    padding: 60px 16px;
+    padding: 60px 30px;
 }
 
 .main-page .title-header-wrapper {
@@ -28,6 +28,9 @@
     margin-left: 20px;
     display: flex;
     align-items: center;
+}
+.main-page .title-header-wrapper .header-right-area .sort-area .button {
+    margin-left: 10px;
 }
 
 .main-page .title-header-wrapper .header-right-area .sort-area span {
@@ -57,15 +60,19 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 16px 0;
     width: 100%;
-    column-gap: 8px;
+    column-gap: 16px;
     row-gap: 16px;
+    min-height: 300px;
+}
+.main-page .card-list.bookmark-list {
+    margin-bottom: 80px;
 }
 
 .main-page .card-list .card-item {
     border: 1px solid var(--gray400);
     border-radius: 8px;
     position: relative;
-    max-width: 300px;
+    background: white;
 }
 
 .main-page .card-list .card-item .info-wrapper {
@@ -75,6 +82,7 @@
 
 .main-page .card-list .card-item .info-wrapper .inline {
     display: flex;
+    max-width: 260px;
 
 }
 
@@ -109,7 +117,11 @@
 }
 
 .main-page .card-list .card-item .bookmark-button i {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    color: var(--gray400);
+}
+
+.main-page .card-list .card-item .bookmark-button.active i {
     color: var(--custom-primary);
 }
 
@@ -119,7 +131,7 @@
 
 .main-page .card-list .card-item .btn-wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 }
 
@@ -134,9 +146,26 @@
 }
 
 .no-search-data {
-
+    font-size: 18px;
+    color: var(--custom-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.no-search-data span {
+    margin-left: 4px;
 }
 
-.view-detail {
+.button.view-detail {
+    border: 1px solid var(--gray400);
+    color: var(--custom-secondary);
+    transition: all 0.2s ease;
+}
+.button.view-detail:hover {
+    background: rgba(0,0,0,0.05);
+}
 
+.button.primary {
+    border: 1px solid var(--custom-primary);
+    color: var(--custom-primary);
 }

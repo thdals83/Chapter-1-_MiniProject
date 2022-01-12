@@ -1,18 +1,14 @@
 {% extends 'index.html' %}
 
-{#{% include 'header.html' %}#}
-
-
-
 {% block content %}
-<header class="header-wrapper">
-    <section class="header">
-        <div class="logo">LOGO</div>
-        <div class="user-name">홍길동 님</div>
-        <button class="button is-primary is-light is-small">login</button>
-        <button class="button is-primary is-light is-small">logout</button>
-    </section>
-</header>
+    <header class="header-wrapper">
+        <section class="header">
+            <div class="logo">명함 관리 플랫폼</div>
+            <div class="user-name">홍길동 님</div>
+            <button class="button is-small">login</button>
+            <button class="button is-small">logout</button>
+        </section>
+    </header>
     <section class="main-page">
         {% if bookmark_card_list != [] %}
             <div class="title-header-wrapper">
@@ -21,9 +17,8 @@
                 <div class="header-right-area">
                     <div class="search-area">
                         <div class="select">
-
                             <select id="bookmark-search-list">
-                               <option value="company">회사</option>
+                                <option value="company">회사</option>
                                 <option value="name">이름</option>
                                 <option value="position">직책</option>
                                 <option value="role">직무</option>
@@ -32,19 +27,20 @@
                             </select>
                         </div>
 
-                        <input class="input" aria-label="search-box" type="text" id="bookmark-search" onkeyup="handleSearchKeyBookmark()" placeholder="검색어를 입력해주세요"/>
+                        <input class="input" aria-label="search-box" type="text" id="bookmark-search"
+                               onkeyup="handleSearchKeyBookmark()" placeholder="검색어를 입력해주세요"/>
 
                     </div>
 
                     <div class="sort-area">
                         <span>정렬 선택</span>
                         <div class="select">
-
-                            <select class="h-select sort-select" id="sort-list-select" onchange="handleChangeBookmarkListSelect(this.value)">
-                            <option value="register">등록순</option>
-                            <option value="company">회사명</option>
-                            <option value="name">이름순(가나다순)</option>
-                        </select>
+                            <select class="h-select sort-select" id="sort-list-select"
+                                    onchange="handleChangeBookmarkListSelect(this.value)">
+                                <option value="register">등록순</option>
+                                <option value="company">회사명</option>
+                                <option value="name">이름순(가나다순)</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -52,11 +48,10 @@
 
 
             <div aria-label="bookmark-list" class="card-list bookmark-list" id="bookmark-list">
-
                 {% for card in bookmark_card_list %}
                     <div aria-label="card-item" class="card-item">
                         {% if card.card_bookmark == 1 %}
-                            <div onclick="handleClickBookmark('{{ card._id }}')" class="bookmark-button click">
+                            <div onclick="handleClickBookmark('{{ card._id }}')" class="bookmark-button active click">
                                 <i class="bi bi-bookmark-fill"></i>
                             </div>
                         {% else %}
@@ -96,7 +91,7 @@
                                 <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
                                     <i class="bi bi-trash-fill"></i>
                                 </div>
-                                <button class="button is-primary view-detail">상세보기</button>
+                                <button class="button view-detail">상세보기</button>
                             </div>
                         </div>
                     </div>
@@ -121,22 +116,23 @@
                         </select>
                     </div>
 
-                    <input class="input" aria-label="search-box" type="text" id="default-search" onkeyup="handleSearchKey()" placeholder="검색어를 입력해주세요"/>
+                    <input class="input" aria-label="search-box" type="text" id="default-search"
+                           onkeyup="handleSearchKey()" placeholder="검색어를 입력해주세요"/>
 
                 </div>
 
                 <div class="sort-area">
                     <span>정렬 선택</span>
                     <div class="select">
-
-                        <select class="h-select sort-select" id="sort-list-select" onchange="handleChangeSelect(this.value)">
+                        <select class="h-select sort-select" id="sort-list-select"
+                                onchange="handleChangeSelect(this.value)">
                             <option value="register">등록순</option>
                             <option value="company">회사명</option>
                             <option value="name">이름순(가나다순)</option>
                         </select>
                     </div>
-                    <button class="button is-normal is-primary is-light" aria-label="add-business-card"
-                            onclick="modal_open_btn()">+
+                    <button class="button primary outlined" aria-label="add-business-card"
+                            onclick="modal_open_btn()">+ 명함 추가
                     </button>
                 </div>
             </div>
@@ -144,15 +140,15 @@
 
 
         <div aria-label="cards_list" class="card-list" id="card-list">
-            {% for card in default_card_list%}
+            {% for card in default_card_list %}
                 <div aria-label="card-item" class="card-item">
                     {% if card.card_bookmark == 1 %}
-                        <div onclick="handleClickBookmark('{{ card._id }}')" class="bookmark-button click">
+                        <div onclick="handleClickBookmark('{{ card._id }}')" class="bookmark-button active click">
                             <i class="bi bi-bookmark-fill"></i>
                         </div>
                     {% else %}
                         <div onclick="handleClickBookmark('{{ card._id }}')" class="bookmark-button click">
-                            <i class="bi bi-bookmark"></i>
+                            <i class="bi bi-bookmark-fill"></i>
                         </div>
                     {% endif %}
 
@@ -183,12 +179,11 @@
                             <div>이메일</div>
                             <div>{{ card.card_email }}</div>
                         </div>
-
                         <div class="btn-wrapper">
                             <div onclick="handleClickDeleteCard('{{ card._id }}')" class="delete-button click">
                                 <i class="bi bi-trash-fill"></i>
                             </div>
-                            <button class="button is-primary view-detail">상세보기</button>
+                            <button class="button view-detail">상세보기</button>
                         </div>
                     </div>
                 </div>
@@ -196,8 +191,11 @@
         </div>
     </section>
 
-
+    <footer class="footer-wrapper">
+        <section class="footer">
+            <div class="">항해 99</div>
+            <div class="">3조 미니 프로젝트</div>
+        </section>
+    </footer>
     <!-- 무한 스크롤 추후 구현 -->
 {% endblock %}
-
-{#{% include 'footer.html' %}#}
