@@ -1,0 +1,22 @@
+            * {
+                font-family: "Do Hyeon", sans-serif;
+            }
+            .form-control{
+                width : 250px;
+                display:inline-block;
+            }
+            .company-form{
+                width : 100px;
+            }
+            .wrap{
+
+                margin: 100px auto 100px  auto;
+                width: 600px
+            }
+            .name-form{
+                width : 300px;
+            }
+            .select-box{
+                width:200px;
+                height: 35px;
+            }

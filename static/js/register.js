@@ -8,7 +8,7 @@ function closebtn() {
 }
 
 function checkbtn() {
-    let useremail = "123@naver.com"
+    let useremail = "bbb@naver.com"
     let card_nameid = $("#card_nameid").val();
     let card_companyid = $("#card_companyid").val();
     let card_roleid = $("#card_roleid").val();
@@ -17,7 +17,7 @@ function checkbtn() {
     let card_addressid = $("#card_addressid").val();
     let card_descid = $("#card_descid").val();
     let card_emailid = $("#card_emailid").val();
-    let card_bookmarkid = "0"
+    let card_bookmarkid = 0
 
     if (card_nameid === "") {
         $("#help-name").text("이름을 입력해주세요.")
