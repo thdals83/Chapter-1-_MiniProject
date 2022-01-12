@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Webpage Title -->
+        <title>회원가입</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/static/css/newMember.css">
+
+        <!-- JS -->
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="/static/js/newMember.js"></script>
+</head>
+<body>
+
+<div class="wrap">
+    메일*<input type="text" class="form-control" id="email1">
+    <select class="select-box" id="email2">
+        <option value="naver.com">naver.com</option>
+        <option value="daum.net">daum.net</option>
+        <option value="gmail.com">gmail.com</option>
+        <option value="direct">직접입력</option>
+    </select>
+{#    <input type="text" id="direct">#}
+
+
+    <button onclick="validate_email()">중복확인</button>
+    <br>
+    <br>
+    이름*<input type="text" class="form-control" id="name">
+    <br>
+    <br>
+    비밀번호*<input type="password" class="form-control" id="password1" onchange="check_pw()">
+    <br>
+    <br>
+    비밀번호 확인*<input type="password" class="form-control" id="password2" onchange="check_pw()">&nbsp;<span id="check"></span>
+    <br>
+    <br>
+    회사/직무/직책*<input type="text" class="company-form" id="company"> <input type="text" class="company-form" id="role"> <input type="text" class="company-form" id="position">
+    <br>
+    <br>
+    전화번호<input type="text" class="form-control" id="tel">
+    <br>
+    <br>
+    회사 주소<input type="text" class="form-control" id="address">
+    <button onclick="api()">주소</button>
+    <br>
+    <br>
+    <button onclick="new_member()" type="button" class="btn btn-primary">회원가입</button>
+</div>
+
+</body>
+</html>
