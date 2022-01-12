@@ -73,11 +73,20 @@ def api_editcard():
     use_card_positionid = request.form['use_card_positionid']
     use_card_addressid = request.form['use_card_addressid']
     use_card_descid = request.form['use_card_descid']
-    # use_card_bookmarkid = int(request.form['use_card_bookmarkid'])
+
     hide_id = request.form['hide_id']
 
+    file = request.files['file']
+    extension = file.filename.split('.')
+    today = datetime.now()
+    mytime = today.strftime('%Y년%m월%d일%H:%M:%S')
+    filename = f'{mytime}-{extension[0]}'
+    filename = "".join(i for i in filename if i not in "\/:*?<>|")
+    filename = filename.strip()
+    save_to = f'static/images/{filename}.{extension[1]}.jpg'
+    file.save(save_to)
+
     doc = {
-        # "email": useremail,
         "card_email": use_card_emailid,
         # 카드 이미지 추가
         "card_name": use_card_nameid,
@@ -87,7 +96,7 @@ def api_editcard():
         "card_tel": use_card_telid,
         "card_address": use_card_addressid,
         "card_desc": use_card_descid,
-        # "card_bookmark": use_card_bookmarkid
+        "imgurl": f'{filename}.{extension[1]}.jpg',
     }
     # db에 저장하기
     db.cards.update_one({'_id':ObjectId(hide_id)}, {'$set':doc})
