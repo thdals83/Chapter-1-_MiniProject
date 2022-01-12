@@ -19,9 +19,14 @@
                 margin: auto;
                 display:inline-block;
             }
+            .outline{
+                width: 600px;
+                margin: 25px auto 25px auto;
+                border: 1px solid red;
+            }
             .wrap{
+                width: 600px;
                 margin: 100px auto 100px  auto;
-                width: 600px
             }
             .name-form{
                 width : 300px;

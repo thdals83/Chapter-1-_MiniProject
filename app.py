@@ -113,7 +113,7 @@ def post_new_member():
         return jsonify({'msg': '유효하지 않은 이메일'})
 
     if is_validate_email and (password1 == password2):
-        encoded = password1.encode('utf-8')
+        # encoded = password1.encode('utf-8')
         pw_hash = hashlib.sha256(password1.encode('utf-8')).hexdigest()
         # hash_password = bcrypt.hashpw(encoded, bcrypt.gensalt())
         doc = {'email': email, 'name': name, 'password': pw_hash,
