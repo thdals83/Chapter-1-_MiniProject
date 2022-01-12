@@ -1,45 +1,23 @@
-
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 
-app = Flask(__name__)
-
-
+# 회원가입 시, 비밀번호를 암호화
 import hashlib
 import bcrypt
 from bson.json_util import dumps
 from operator import itemgetter
+# JWT 패키지
 import jwt
 from bson import ObjectId
-
+import datetime
 from pymongo import MongoClient
 
+app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
-db = client.dbsparta_plus_week4
+db = client.card
 
 # JWT 비밀문자열
 SECRET_KEY = 'SPARTA'
-
-
-
-# JWT 패키지
-import jwt
-
-# 토큰에 만료시간
-import datetime
-
-# 회원가입 시, 비밀번호를 암호화
-import hashlib
-
-
-
-
-
-
-#카드 페이지로 이동
-@app.route('/index')
-def home2():
-    return render_template('mainPage.html')
 
 
 #로그인 페이지로 이동
@@ -62,7 +40,7 @@ def api_login():
     # pw를 암호화
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
     # 해당 유저 찾기
-    result = db.users.find_one({'id': id_receive, 'password': pw_hash})
+    result = db.users.find_one({'email': id_receive, 'password': pw_hash})
 
     if result is not None:
         #로그인 성공시
@@ -73,10 +51,10 @@ def api_login():
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         # token 주기
         return jsonify({'result': 'success', 'token': token})
-
     # 로그인 실패 시
     else:
         return jsonify({'result': 'fail', 'msg': '아이디 또는 비밀번호가 일치하지 않습니다.'})
+
 
 @app.route('/')
 def home():
