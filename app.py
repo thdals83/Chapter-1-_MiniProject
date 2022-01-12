@@ -91,11 +91,21 @@ def api_login():
     id_receive = request.form['id_give']
     pw_receive = request.form['password_give']
     # pw를 암호화
-    pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
-    # 해당 유저 찾기
-    result = db.users.find_one({'email': id_receive, 'password': pw_hash})
+    #해시로만
+    # pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
+    # sault 추가
+    encoded = pw_receive.encode('utf-8')
+    pw_hash = bcrypt.hashpw(encoded, bcrypt.gensalt())
 
-    if result is not None:
+    print('---------------------------------------------------------------')
+    print(pw_hash.decode('utf-8'))
+    result = db.users.find_one({'email': id_receive})
+    print(result['password'].decode('utf-8'))
+    print(result['password'] == pw_hash)
+    print(bcrypt.checkpw(pw_receive.encode('utf-8'), result['password']))
+    print('---------------------------------------------------------------')
+
+    if bcrypt.checkpw(pw_receive.encode('utf-8'), result['password']):
         #로그인 성공시
         payload = {
             'id': id_receive,
@@ -312,9 +322,9 @@ def post_new_member():
 
     if is_validate_email and (password1 == password2):
         encoded = password1.encode('utf-8')
-        pw_hash = hashlib.sha256(password1.encode('utf-8')).hexdigest()
-        # hash_password = bcrypt.hashpw(encoded, bcrypt.gensalt())
-        doc = {'email': email, 'name': name, 'password': pw_hash,
+        #pw_hash = hashlib.sha256(password1.encode('utf-8')).hexdigest()
+        hash_password = bcrypt.hashpw(encoded, bcrypt.gensalt())
+        doc = {'email': email, 'name': name, 'password': hash_password,
                'company': company, 'role': role, 'position': position, 'tel': tel, 'address': address}
         db.users.insert_one(doc)
 
