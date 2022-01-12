@@ -3,13 +3,23 @@
             }
             .form-control{
                 width : 250px;
+                height: 35px;
+                margin: auto;
+                display:inline-block;
+            }
+            .email-control{
+                width : 130px;
+                height: 35px;
+                margin: auto;
                 display:inline-block;
             }
             .company-form{
                 width : 100px;
+                height: 35px;
+                margin: auto;
+                display:inline-block;
             }
             .wrap{
-
                 margin: 100px auto 100px  auto;
                 width: 600px
             }
