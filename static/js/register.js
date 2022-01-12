@@ -85,7 +85,7 @@ function editbtn() {
             use_card_addressid: use_card_addressid,
             use_card_descid: use_card_descid,
             // use_card_bookmarkid: use_card_bookmarkid,
-            hide_id:hide_id
+            hide_id: hide_id
         },
         success: function (response) {
             alert(response['msg']);
@@ -106,7 +106,7 @@ function checkbtn() {
     let card_descid = $("#card_descid").val();
     let card_emailid = $("#card_emailid").val();
     let card_bookmarkid = 0
-    let imgfile = document.getElementById('preview').src
+
 
     if (card_nameid === "") {
         $("#help-name").text("이름을 입력해주세요.")
@@ -154,7 +154,23 @@ function checkbtn() {
         }
     })
 
-    window.location.reload()
+
+    // var form = $('#preview')[0];
+    // var form = "Dd";
+
+    let fileInput = document.getElementsByClassName("file");
+    console.log(fileInput)
+    
+    let formData = new FormData()
+    $.ajax({
+        url: '/api/uploader',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false
+    })
+
+    // window.location.reload()
 }
 
 function find_address() {
@@ -173,17 +189,13 @@ function find_address2() {
     }).open();
 }
 
-function loadFile(input){
+function loadFile(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
             document.getElementById('preview').src = e.target.result;
         };
-        console.log(reader)
         reader.readAsDataURL(input.files[0]);
-    }
-    else {
-        document.getElementById('preview').src = "";
     }
 }

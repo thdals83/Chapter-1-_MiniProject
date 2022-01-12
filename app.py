@@ -20,6 +20,12 @@ def home():
     bookmark_card_list = list(db.cards.find({'email': 'bbb@naver.com', 'card_bookmark': 1}))
     return render_template('mainPage.html', default_card_list=default_card_list, bookmark_card_list=bookmark_card_list)
 
+@app.route('/api/uploader', methods = ['POST'])
+def upload_file():
+    res = request.form
+    print(res)
+    return 'file uploaded successfully'
+
 @app.route('/api/pluscard', methods=['POST'])
 def api_pluscard():
     # db schedule에 들어갈 정보들 dictionary 작성
@@ -33,8 +39,6 @@ def api_pluscard():
     card_addressid = request.form['card_addressid']
     card_descid = request.form['card_descid']
     card_bookmarkid = int(request.form['card_bookmarkid'])
-
-
 
     doc = {
         "email": useremail,
