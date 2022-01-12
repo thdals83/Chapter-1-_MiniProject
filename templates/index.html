@@ -77,36 +77,38 @@
         </div>
 
         <div class="writepostion">
-            <p class="titlecss"><b>이름 (필수)</b></p>
-            <p><input class="inputcss" id="card_nameid" placeholder=" 이름"></p>
-            <p class="help-namecss" id="help-name"></p>
+            <div class="writepostion-left">
+                <p class="titlecss"><b>이름 (필수)</b></p>
+                <p><input class="inputcss" id="card_nameid" placeholder=" 이름"></p>
+                <p class="help-namecss" id="help-name"></p>
 
-            <p class="titlecss2"><b>이메일 (필수)</b></p>
-            <p><input class="inputcss" id="card_emailid" placeholder=" example@ex.com"></p>
-            <p class="help-emailcss" id="help-email"></p>
+                <p class="titlecss2"><b>이메일 (필수)</b></p>
+                <p><input class="inputcss" id="card_emailid" placeholder=" example@ex.com"></p>
+                <p class="help-emailcss" id="help-email"></p>
 
-            <p class="titlecss3"><b>전화번호 (필수)</b></p>
-            <p><input class="inputcss" id="card_telid" placeholder=" 010-0000-0000"></p>
-            <p class="help-telcss" id="help-tel"></p>
+                <p class="titlecss3"><b>전화번호 (필수)</b></p>
+                <p><input class="inputcss" id="card_telid" placeholder=" 010-0000-0000"></p>
+                <p class="help-telcss" id="help-tel"></p>
 
-            <p class="titlecss"><b>회사 (필수)</b></p>
-            <p><input class="inputcss2" id="card_companyid" placeholder=" 회사"></p>
-            <p class="help-companycss" id="help-company"></p>
-
-            <p class="titlecss4"><b>직무/직책</b></p>
-            <div class="setcss">
-                <input class="inputcss3" id="card_roleid" placeholder=" 직무">
-                <input class="inputcss3" id="card_positionid" placeholder=" 직책">
+                <p class="titlecss"><b>회사 (필수)</b></p>
+                <p><input class="inputcss2" id="card_companyid" placeholder=" 회사"></p>
+                <p class="help-companycss" id="help-company"></p>
             </div>
+            <div class="writepostion-right">
+                <p class="titlecss4"><b>직무/직책</b></p>
+                <div class="setcss">
+                    <input class="inputcss3" id="card_roleid" placeholder=" 직무">
+                    <input class="inputcss3" id="card_positionid" placeholder=" 직책">
+                </div>
 
-            <p class="titlecss4"><b>회사 주소</b></p>
+                <p class="titlecss4"><b>회사 주소</b></p>
 
-            <input class="inputcss4" type="text" id="card_addressid" placeholder=" 회사 주소">
-            <button class="jusocss" onclick="find_address()"><b>주소 찾기</b></button>
+                <input class="inputcss4" type="text" id="card_addressid" placeholder=" 회사 주소">
+                <button class="jusocss" onclick="find_address()"><b>주소 찾기</b></button>
 
-            <p class="titlecss4"><b>상세 정보</b></p>
-            <textarea class="inputcss5" id="card_descid" placeholder=" 상세 정보"></textarea>
-
+                <p class="titlecss4"><b>상세 정보</b></p>
+                <textarea class="inputcss5" id="card_descid" placeholder=" 상세 정보"></textarea>
+            </div>
             <button class="clearcss" onclick="checkbtn()"><b>명함 등록</b></button>
         </div>
         <button class="cancelcss" onclick="closebtn()"></button>
@@ -128,34 +130,37 @@
         <div class="writepostion">
             <input type="text" id="hide_id" style="display: none">
 
-            <p class="titlecss"><b>이름 (필수)</b></p>
-            <p><input class="inputcss" type="text" id="use_card_nameid" placeholder=" 이름"></p>
-            <p class="help-namecss" id="use_helpname"></p>
+            <div class="writepostion-left">
+                <p class="titlecss"><b>이름 (필수)</b></p>
+                <p><input class="inputcss" type="text" id="use_card_nameid" placeholder=" 이름"></p>
+                <p class="help-namecss" id="use_helpname"></p>
 
-            <p class="titlecss2"><b>이메일 (필수)</b></p>
-            <p><input class="inputcss" type="text" id="use_card_emailid" placeholder=" example@ex.com"></p>
-            <p class="help-emailcss" id="use_helpemail"></p>
+                <p class="titlecss2"><b>이메일 (필수)</b></p>
+                <p><input class="inputcss" type="text" id="use_card_emailid" placeholder=" example@ex.com"></p>
+                <p class="help-emailcss" id="use_helpemail"></p>
 
-            <p class="titlecss3"><b>전화번호 (필수)</b></p>
-            <p><input class="inputcss" type="text" id="use_card_telid" placeholder="전화번호 (필수)"></p>
-            <p class="help-telcss" id="use_helptel"></p>
+                <p class="titlecss3"><b>전화번호 (필수)</b></p>
+                <p><input class="inputcss" type="text" id="use_card_telid" placeholder="전화번호 (필수)"></p>
+                <p class="help-telcss" id="use_helptel"></p>
 
-            <p class="titlecss"><b>회사 (필수)</b></p>
-            <p><input class="inputcss2" type="text" id="use_card_companyid" placeholder="회사 (필수)">
-            <p class="help-companycss" id="use_helpcompany"></p>
-
-            <p class="titlecss4"><b>직무/직책</b></p>
-            <div class="setcss">
-                <input class="inputcss3" id="use_card_roleid" placeholder=" 직무">
-                <input class="inputcss3" id="use_card_positionid" placeholder=" 직책">
+                <p class="titlecss"><b>회사 (필수)</b></p>
+                <p><input class="inputcss2" type="text" id="use_card_companyid" placeholder="회사 (필수)">
+                <p class="help-companycss" id="use_helpcompany"></p>
             </div>
+            <div class="writepostion-right">
+                <p class="titlecss4"><b>직무/직책</b></p>
+                <div class="setcss">
+                    <input class="inputcss3" id="use_card_roleid" placeholder=" 직무">
+                    <input class="inputcss3" id="use_card_positionid" placeholder=" 직책">
+                </div>
 
-            <p class="titlecss4"><b>회사 주소</b></p>
-            <input class="inputcss4" type="text" type="text" id="use_card_addressid" placeholder=" 회사 주소">
-            <button class="jusocss" onclick="find_address2()"><b>주소 찾기</b></button>
+                <p class="titlecss4"><b>회사 주소</b></p>
+                <input class="inputcss4" type="text" type="text" id="use_card_addressid" placeholder=" 회사 주소">
+                <button class="jusocss" onclick="find_address2()"><b>주소 찾기</b></button>
 
-            <p class="titlecss4"><b>상세 정보</b></p>
-            <textarea class="inputcss5" id="use_card_descid" placeholder=" 상세 정보"></textarea>
+                <p class="titlecss4"><b>상세 정보</b></p>
+                <textarea class="inputcss5" id="use_card_descid" placeholder=" 상세 정보"></textarea>
+            </div>
 
             <button class="clearcss" onclick="editbtn()"><b>수정</b></button>
 
