@@ -80,8 +80,8 @@
     a. 검색 조건 선택 후 검색어 입력 (엔터 or 아이콘 클릭시 검색 리스트 노출)
 
 
+![KakaoTalk_Photo_2022-01-13-14-08-59](https://user-images.githubusercontent.com/94890646/149269620-2443a3fe-1a45-45fb-8b26-28f2e73d7397.jpeg)
 
-*명함 수정 / 상세정보 페이지
 
 *명함 수정 / 상세정보 페이지
 
