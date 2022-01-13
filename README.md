@@ -16,7 +16,7 @@
 ------------
 ## 설계 (와이어프레임)
 
-*로그인 페이지
+### 로그인 페이지
 
 ![KakaoTalk_Photo_2022-01-13-14-08-49](https://user-images.githubusercontent.com/94890646/149269565-90385610-4b02-488b-94cc-e293e4539792.jpeg)
 
@@ -45,7 +45,7 @@
   
   
   
-*회원가입 페이지
+### 회원가입 페이지
   
 ![KakaoTalk_Photo_2022-01-13-14-08-59](https://user-images.githubusercontent.com/94890646/149269620-2443a3fe-1a45-45fb-8b26-28f2e73d7397.jpeg)
 
@@ -76,7 +76,7 @@
   
   
   
-*리스트 페이지  
+### 리스트 페이지  
   
 ![KakaoTalk_Photo_2022-01-13-14-08-55](https://user-images.githubusercontent.com/94890646/149270534-5df78484-69c3-4cf6-a600-8809fe9d843a.jpeg)
   
@@ -119,7 +119,7 @@
   
   
 
-*명함 수정 / 상세정보 페이지  
+### 명함 수정 / 상세정보 페이지  
   
 ![KakaoTalk_Photo_2022-01-13-14-09-03](https://user-images.githubusercontent.com/94890646/149270902-60508c64-7574-4316-840f-2bb551322ab8.jpeg)
   
@@ -134,7 +134,7 @@
      
      
      
-*명함 등록  
+### 명함 등록  
   
 ![KakaoTalk_Photo_2022-01-13-14-09-47](https://user-images.githubusercontent.com/94890646/149270919-8ece9e8c-6785-47a6-a5f6-f96bc225e73a.jpeg)
   
