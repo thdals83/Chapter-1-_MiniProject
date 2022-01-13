@@ -5,6 +5,7 @@
 -----------
 ### 사이트 주소 : http://ujin16.shop/
 ### Youtube URL : https://www.youtube.com/watch?v=tin3lPlYfI0
+<img src="https://user-images.githubusercontent.com/94890646/149274601-4274c600-4a30-4ff8-a559-b40de9eac2b0.png" width="50%">
 ------------
 ## 제작기간 및 팀원소개
 * 22년 1월 10일 ~ 22년 1월 13일
