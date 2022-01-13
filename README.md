@@ -10,7 +10,7 @@
 * 22년 1월 10일 ~ 22년 1월 13일
 * 송민혁 : 명함 등록, 수정, 주소 api
 * 김동섭 : 즐겨찾기기능, 검색기능, 리스트정렬
-* 양승훈 : 회원가입, ash암호화, bscrypt암호화, jwt인증, 주소 api
+* 양승훈 : 회원가입, hash암호화, bscrypt암호화, jwt인증, 주소 api
 * 전유진 : 로그인, hash암호화, bscrypt암호화, jwt인증
 ------------
 ## 설명 [Wiki](https://github.com/thdals83/Chapter-1-_MiniProject/wiki)
