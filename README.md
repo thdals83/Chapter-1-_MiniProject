@@ -5,14 +5,18 @@
 -----------
 ### 사이트 주소 : http://ujin16.shop/
 ### Youtube URL : https://www.youtube.com/watch?v=tin3lPlYfI0
+
+
 <img src="https://user-images.githubusercontent.com/94890646/149274601-4274c600-4a30-4ff8-a559-b40de9eac2b0.png" width="50%">
+
+
 ------------
-## 제작기간 및 팀원소개
-* 22년 1월 10일 ~ 22년 1월 13일
-* 송민혁 : 명함 등록, 수정, 주소 api
-* 김동섭 : 즐겨찾기기능, 검색기능, 리스트정렬
-* 양승훈 : 회원가입, hash암호화, bscrypt암호화, jwt인증, 주소 api
-* 전유진 : 로그인, hash암호화, bscrypt암호화, jwt인증
+## 제작기간 및 팀원소개 
+* 22년 1월 10일 ~ 22년 1월 13일  
+* 송민혁 : 명함 등록, 수정, 주소 api  
+* 김동섭 : 즐겨찾기기능, 검색기능, 리스트정렬   
+* 양승훈 : 회원가입, hash암호화, bscrypt암호화, jwt인증, 주소 api  
+* 전유진 : 로그인, hash암호화, bscrypt암호화, jwt인증   
 ------------
 ## 설명 [Wiki](https://github.com/thdals83/Chapter-1-_MiniProject/wiki)
  #### 화면 구성: [화면 구성가기](https://github.com/thdals83/Chapter-1-_MiniProject/wiki/%ED%99%94%EB%A9%B4-%EA%B5%AC%EC%84%B1)
