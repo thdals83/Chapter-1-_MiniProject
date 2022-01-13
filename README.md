@@ -4,7 +4,7 @@
 >명함 관리 플랫폼
 -----------
 ### 사이트 주소 : http://ujin16.shop/
-### Youtube URL :
+### Youtube URL : https://www.youtube.com/watch?v=tin3lPlYfI0
 <썸네일 이미지>
 ------------
 ## 제작기간 및 팀원소개
