@@ -74,7 +74,7 @@
 
 *리스트 페이지
 
-
+![KakaoTalk_Photo_2022-01-13-14-08-55](https://user-images.githubusercontent.com/94890646/149270534-5df78484-69c3-4cf6-a600-8809fe9d843a.jpeg)
 
   1. 즐겨찾기 리스트
     a. 즐겨찾기 목록 노출
@@ -115,6 +115,7 @@
 
 *명함 수정 / 상세정보 페이지
 
+![KakaoTalk_Photo_2022-01-13-14-09-03](https://user-images.githubusercontent.com/94890646/149270902-60508c64-7574-4316-840f-2bb551322ab8.jpeg)
 
 
   1. 닫기
@@ -127,6 +128,7 @@
    
 *명함 등록
 
+![KakaoTalk_Photo_2022-01-13-14-09-47](https://user-images.githubusercontent.com/94890646/149270919-8ece9e8c-6785-47a6-a5f6-f96bc225e73a.jpeg)
 
 
   1. 사진등록
