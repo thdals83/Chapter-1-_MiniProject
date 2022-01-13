@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify, request, session, redirect, u
 
 # 회원가입 시, 비밀번호를 암호화
 import hashlib
-# import bcrypt
+import bcrypt
 from bson.json_util import dumps
 from operator import itemgetter
 # JWT 패키지
@@ -111,7 +111,7 @@ def api_login():
             'id': id_receive,
             'exp': datetime.utcnow() + timedelta(seconds=60 * 60)
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
         # token 주기
         return jsonify({'result': 'success', 'token': token})
     # 로그인 실패 시
