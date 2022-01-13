@@ -18,7 +18,7 @@
 
 .modal_content {
     width: 1200px;
-    height: 600px;
+    height: 900px;
     background: #fff;
     border-radius: 5px;
     position: relative;
@@ -33,8 +33,8 @@
 }
 
 .modal_content2 {
-    width: 1200px;
-    height: 600px;
+    width: 1000px;
+    height: 800px;
     background: #fff;
     border-radius: 10px;
     position: relative;
@@ -53,8 +53,8 @@
 }
 
 .cardimg {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     border-radius: 5px;
     background-position: center;
     background-size: cover;
@@ -66,29 +66,15 @@
 .findbtn {
     width: 110px;
     height: 30px;
-    line-height: 30px;
-    margin-left: 190px;
+    margin-left: 230px;
     background-color: #b4b1b1;
     border: 0;
-    border-radius: 3px;
     outline: 0;
 }
 
 .writepostion {
-    padding-right: 100px;
-    position: relative;
-}
+    padding-right: 200px;
 
-.writepostion-left {
-    position: fixed;
-    left: 350px;
-    top: 100px;
-}
-
-.writepostion-right {
-    position: fixed;
-    left: 190px;
-    top: 100px;
 }
 
 .titlecss {
@@ -109,14 +95,14 @@
 
 .titlecss4 {
     /*padding-right: 100px;*/
-    margin-right: -220px;
+    margin-right: -30px;
     font-size: 18px;
 }
 
 .inputcss {
     font-size: 18px;
     width: 300px;
-    height: 30px;
+    height: 45px;
     border-radius: 5px;
     margin-top: 10px;
     margin-right: 87px;
@@ -127,7 +113,7 @@
 .inputcss2 {
     font-size: 18px;
     width: 200px;
-    height: 30px;
+    height: 45px;
     border-radius: 5px;
     margin-top: 10px;
     margin-right: 190px;
@@ -138,7 +124,7 @@
 .inputcss3 {
     font-size: 18px;
     width: 100px;
-    height: 30px;
+    height: 45px;
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -147,10 +133,10 @@
 
 .inputcss4 {
     font-size: 13px;
-    width: 350px;
-    height: 30px;
+    width: 550px;
+    height: 45px;
     border-radius: 5px;
-    margin-left: 500px;
+    margin-left: 480px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-color: black;
@@ -158,10 +144,10 @@
 
 .inputcss5 {
     font-size: 13px;
-    width: 400px;
-    height: 150px;
+    width: 660px;
+    height: 120px;
     border-radius: 5px;
-    margin-left: 550px;
+    margin-left: 480px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-color: black;
@@ -169,19 +155,20 @@
 
 
 .setcss {
-    padding-left: 350px;
+    padding-left: 160px;
 }
 
 .jusocss {
-    position: fixed;
-    width: 80px;
-    height: 30px;
-    margin-left: 10px;
-    margin-top: 10px;
+    position: absolute;
+    width: 100px;
+    height: 45px;
+    margin-left: 230px;
     background-color: #b4b1b1;
     border-radius: 5px;
     border: 0;
     outline: 0;
+    margin-top: -54px;
+    margin-left: 540px;
 }
 
 .help-namecss {
@@ -209,11 +196,11 @@
 }
 
 .cancelcss {
-    position: fixed;
+    position: absolute;
     width: 30px;
     height: 30px;
-    top: 10px;
-    right: 10px;
+    margin-top: -850px;
+    margin-left: 565px;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAM1BMVEX///8AAACmpqajo6OhoaHz8/PR0dH29va7u7tfX1+tra1VVVV5eXlSUlJNTU0ZGRlra2vRe4gkAAADN0lEQVR4nO2di3qqMBCEida70r7/057PLydtA0QU2dt0/heYHTMrKCHbdYQQQgghhBBCCCGEEEIIIYQQQgghhBDyZ9lfb/3pfDBSP5xP/e26F1TYXVLmKCjS5vhf/bKTUth9psJWSuMB22/1TymLl/TDRkijzeaX+kVGYp9+o72Km0pdphevlUb6EBFp8VGLX0VEbrWI6ipuBto3EZU+mVkcGky9iMxpKKNmcWQwnUR0ziMdpV7cjoXPIkKHsZDKRWO8gikJ3VUdJ6TkgzplUOyeakpM2uJERCU19S2qK2oLGqRGNzRTBsW/vzVFlXuwoBcciy82VWEzg1rhMelBTXGjHizIB8gwohnpT9g0oholGEc0Ixkj84hKl+HEoFyUHPSgbCkuerAgESc3EZUqx5nB9SPlqAcflbTcorsVXLsolwbXDKrDiGbWKszVZaJmnXA5jWhmjeJcG1wjYG57sPBugY57sPBeyJxHNPNOkSEMvhPUIAaXFxrG4NJSAxlc9o3o/jJR83q5AS4TNa9GLlREM6+VHNDga7EL1oOF58sO14OFZ6MXMqKZ50oPbPC5oIaNaGZ+fUKv4J05A+ENzoUw6GWi5pGJ4D1YaAcRIKKZlhEYg60wQvRgYcrMF84K3pmyCGVwOqgwEc3Mr2LoFbwzZzG8wTmLAAYf92LwHiy0VxFiBe+0LMIYbFkEMth1U3cyX9ZFrQn8GsL3Ifx3Kfz1EP6eBv6+FP63BfzvQ/jf+PD/08D/1wb/fyn8f97wzy3gnz3BPz+EfwYM/xx/+V6MIL0Iv58Gfk8U/L42+L2J8PtL4fcIw+/zht+rD/++xfJCg1iEf+8J/t01+PcP4d8hhX8PGP5dbvj38eHPVIA/FwP+bBP482ngzxiCPycK/qwv+PPa4M/cgz83UTZKDnoR/vxS+RgZB1XjEzYNKvxZ0FoBMguqnrCRRc3wmPQi/GwE7eCoB1W/M5QVLVpftS3gZwXhz3vCn9mFP3cNf3becP6h5qDOoUUZh/gzLOs5pNqjVutVFJoJ7GeWrMyQzr8wDxh/pnPnYS53LzqXmxBCCCGEEEIIIYQQQgghhBBCCCGEEEKc8w/YYxuI7Ao44QAAAABJRU5ErkJggg==');
     background-position: center;
     background-size: cover;
@@ -221,11 +208,10 @@
 }
 
 .clearcss {
-    position: absolute;
-    top: 450px;
-    width: 120px;
+    width: 100px;
     height: 40px;
-    margin-left: 330px;
+    margin-left: 200px;
+    margin-top: 10px;
     background-color: #b4b1b1;
     border-radius: 5px;
     border: 0;
@@ -235,7 +221,3 @@
 .chooseFile{
     display: none;
 }
-
-
-
-
