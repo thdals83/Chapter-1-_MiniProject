@@ -119,7 +119,7 @@
       
  -------------
  ## API
-https://github.com/thdals83/Chapter-1-_MiniProject.wiki.git
+https://github.com/thdals83/Chapter-1-_MiniProject/wiki/API-%EC%84%A4%EB%AA%85
 ---------------
 
 ## 사용 기술
