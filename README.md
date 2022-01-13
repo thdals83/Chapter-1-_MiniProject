@@ -14,11 +14,9 @@
 * 양승훈 : 회원가입, ash암호화, bscrypt암호화, jwt인증, 주소 api
 * 전유진 : 로그인, hash암호화, bscrypt암호화, jwt인증
 ------------
- ## 화면 구성
-https://github.com/thdals83/Chapter-1-_MiniProject/wiki/%ED%99%94%EB%A9%B4-%EA%B5%AC%EC%84%B1
- -------------
- ## API
- https://github.com/thdals83/Chapter-1-_MiniProject/wiki/API-%EC%84%A4%EB%AA%85
+## 설명 [Wiki](https://github.com/thdals83/Chapter-1-_MiniProject/wiki)
+ #### 화면 구성: [화면 구성가기](https://github.com/thdals83/Chapter-1-_MiniProject/wiki/%ED%99%94%EB%A9%B4-%EA%B5%AC%EC%84%B1)
+ #### API: [API 가기](https://github.com/thdals83/Chapter-1-_MiniProject/wiki/API-%EC%84%A4%EB%AA%85)
 ---------------
 
 ## 사용 언어, 스택, 라이브러리
