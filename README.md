@@ -20,6 +20,34 @@
 
 ![KakaoTalk_Photo_2022-01-13-14-08-49](https://user-images.githubusercontent.com/94890646/149269565-90385610-4b02-488b-94cc-e293e4539792.jpeg)
 
+
+  1. 아이디 입력
+    a. 아이디는 이메일 주소
+    
+  2. 비밀번호 입력
+  
+  6. 로그인 버튼
+    a. 아이디
+	* 이메일 형식 확인 메시지 노출
+	* 아이디 미입력 메시지 노출
+   b. 비밀번호
+	* 비밀번호 미입력 메시지 노출
+  c. 회원이 아닐 경우
+	* 회원이 아니라는 메시지와 함께 회원가입 페이지로 이동
+    
+  7. 회원가입 버튼 
+    a. 이메일 중복 결과 확인
+    b. 비밀번호 조건 만족 확인
+    c. 비밀번호 일치 확인
+    d. 나머지 작성내용 다 적었는지 확인
+
+
+
+*회원가입 페이지
+
+![KakaoTalk_Photo_2022-01-13-14-08-59](https://user-images.githubusercontent.com/94890646/149269620-2443a3fe-1a45-45fb-8b26-28f2e73d7397.jpeg)
+
+
   1. 아이디 입력
     a. 중복확인 버튼
       * 클릭시 db에 중복이메일 확인
@@ -43,7 +71,10 @@
     d. 나머지 작성내용 다 적었는지 확인
 
 
+
 *리스트 페이지
+
+
 
   1. 즐겨찾기 리스트
     a. 즐겨찾기 목록 노출
@@ -80,10 +111,11 @@
     a. 검색 조건 선택 후 검색어 입력 (엔터 or 아이콘 클릭시 검색 리스트 노출)
 
 
-![KakaoTalk_Photo_2022-01-13-14-08-59](https://user-images.githubusercontent.com/94890646/149269620-2443a3fe-1a45-45fb-8b26-28f2e73d7397.jpeg)
 
 
 *명함 수정 / 상세정보 페이지
+
+
 
   1. 닫기
   
@@ -91,8 +123,11 @@
     a. 수정 하고 싶은 정보 입력
     b. 명함 주인에게만 수정 버튼 노출
    
-
+   
+   
 *명함 등록
+
+
 
   1. 사진등록
     a. 이미지 찾기
@@ -119,7 +154,21 @@
       
  -------------
  ## API
-https://github.com/thdals83/Chapter-1-_MiniProject/wiki/API-%EC%84%A4%EB%AA%85
+ 
+| 기능 | Method | URL | Request  | Response |
+|:----------|:----------:|:----------:|:---------:|:---------:|
+| 로그인 | POST |  api/login|id_give: id, password_give: password | 로그인 완료, token
+| 회원가입 | POST | api/newMember| email1: email1, email2: email2, name: name, password1: password1, password2: password2,direct: direct, company: company, role: role, position: position, tel: tel, address: address | 회원가입 완료, '/'
+| 이메일 중복 확인 | POST | /validate_email |email: email | 사용 가능한 이메일입니다./이미 존재하는 이메일입니다.
+| 명함 상세정보 | POST | api/getcard | 'getcard_id': id| cardinfo
+| 명함 수정| POST | api/edit | form_data| 
+| 명함 삭제  | POST | /api/list/delete | 'card_id_give': cardId|
+| 명함 북마크 클릭  | POST | /api/list/bookmark | 'card_id_give': cardId |
+| 명함 등록  | POST | api/pluscard | form_data |
+| 명함 정렬  | POST | api/sort | action_give: action | result |
+| 명함 북마크 정렬  | POST | api/sort/bookmark | action_give: action | result |
+| 명함 검색  | POST | api/search | input_give: input, select_give: select | result |
+| 명함 북마크 검색  | POST | api/search/bookmark | input_give: input, select_give: select| result |
 ---------------
 
 ## 사용 기술
