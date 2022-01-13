@@ -119,21 +119,7 @@
       
  -------------
  ## API
- 
-| 기능 | Method | URL | Request  | Response |
-|:----------|:----------:|:----------:|:---------:|:---------:|
-| 로그인 | POST |  api/login|id_give: id, password_give: password | 로그인 완료, token
-| 회원가입 | POST | api/newMember| email1: email1, email2: email2, name: name, password1: password1, password2: password2,direct: direct, company: company, role: role, position: position, tel: tel, address: address | 회원가입 완료, '/'
-| 이메일 중복 확인 | POST | /validate_email |email: email | 사용 가능한 이메일입니다./이미 존재하는 이메일입니다.
-| 명함 상세정보 | POST | api/getcard | 'getcard_id': id| cardinfo
-| 명함 수정| POST | api/edit | form_data| 
-| 명함 삭제  | POST | /api/list/delete | 'card_id_give': cardId|
-| 명함 북마크 클릭  | POST | /api/list/bookmark | 'card_id_give': cardId |
-| 명함 등록  | POST | api/pluscard | form_data |
-| 명함 정렬  | POST | api/sort | action_give: action | result |
-| 명함 북마크 정렬  | POST | api/sort/bookmark | action_give: action | result |
-| 명함 검색  | POST | api/search | input_give: input, select_give: select | result |
-| 명함 북마크 검색  | POST | api/search/bookmark | input_give: input, select_give: select| result |
+https://github.com/thdals83/Chapter-1-_MiniProject.wiki.git
 ---------------
 
 ## 사용 기술
