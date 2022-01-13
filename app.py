@@ -97,13 +97,13 @@ def api_login():
     encoded = pw_receive.encode('utf-8')
     pw_hash = bcrypt.hashpw(encoded, bcrypt.gensalt())
 
-    print('---------------------------------------------------------------')
-    print(pw_hash.decode('utf-8'))
+    # print('---------------------------------------------------------------')
+    # print(pw_hash.decode('utf-8'))
     result = db.users.find_one({'email': id_receive})
-    print(result['password'].decode('utf-8'))
-    print(result['password'] == pw_hash)
-    print(bcrypt.checkpw(pw_receive.encode('utf-8'), result['password']))
-    print('---------------------------------------------------------------')
+    # print(result['password'].decode('utf-8'))
+    # print(result['password'] == pw_hash)
+    # print(bcrypt.checkpw(pw_receive.encode('utf-8'), result['password']))
+    # print('---------------------------------------------------------------')
 
     if bcrypt.checkpw(pw_receive.encode('utf-8'), result['password']):
         #로그인 성공시
